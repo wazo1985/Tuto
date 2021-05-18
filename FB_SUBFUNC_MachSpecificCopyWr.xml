@@ -1,0 +1,721 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<project xmlns="http://www.plcopen.org/xml/tc6_0200">
+  <fileHeader companyName="Beckhoff Automation GmbH" productName="TwinCAT PLC Control" productVersion="3.5.13.20" creationDateTime="2020-11-20T11:39:44.6841583" />
+  <contentHeader name="LorochCxPlc_1" modificationDateTime="2020-11-20T11:39:44.6841583">
+    <coordinateInfo>
+      <fbd>
+        <scaling x="1" y="1" />
+      </fbd>
+      <ld>
+        <scaling x="1" y="1" />
+      </ld>
+      <sfc>
+        <scaling x="1" y="1" />
+      </sfc>
+    </coordinateInfo>
+    <addData>
+      <data name="http://www.3s-software.com/plcopenxml/projectinformation" handleUnknown="implementation">
+        <ProjectInformation />
+      </data>
+    </addData>
+  </contentHeader>
+  <types>
+    <dataTypes />
+    <pous>
+      <pou name="FB_SUBFUNC_MachSpecificCopyWr" pouType="functionBlock">
+        <interface>
+          <inputVars>
+            <variable name="MachineSpecificationConvert">
+              <type>
+                <derived name="ST_MachSpecification" />
+              </type>
+            </variable>
+          </inputVars>
+          <outputVars>
+            <variable name="WrMachSpecificDataRaw">
+              <type>
+                <derived name="ST_MachSpecificRaw" />
+              </type>
+            </variable>
+          </outputVars>
+          <inOutVars>
+            <variable name="Done">
+              <type>
+                <BOOL />
+              </type>
+            </variable>
+          </inOutVars>
+        </interface>
+        <body>
+          <ST>
+            <xhtml xmlns="http://www.w3.org/1999/xhtml">(* copy machpara *)
+	Done	:=	FALSE;
+
+	IF	( NOT Done )
+		THEN
+			(* checksum *)
+			WrMachSpecificDataRaw.Raw100											:=		SIZEOF(WrMachSpecificDataRaw);
+			(* checksum *)
+			MachineSpecificationConvert.Checksum										:=		SIZEOF(MachineSpecificationConvert);
+(* ---------------------------------------- UI Config ---------------------------------------------------------------------------- *)
+			WrMachSpecificDataRaw.Raw19331											:=		MachineSpecificationConvert.Base.IncrementConverterDLL;
+			WrMachSpecificDataRaw.Raw1000											:=		MachineSpecificationConvert.Base.MachineType;
+			WrMachSpecificDataRaw.Raw19330											:=		MachineSpecificationConvert.Base.MachineOS;
+			WrMachSpecificDataRaw.Raw1002											:=		MachineSpecificationConvert.Base.Language;
+			WrMachSpecificDataRaw.Raw1003											:=		MachineSpecificationConvert.Base.MachineNumber;
+			WrMachSpecificDataRaw.Raw1004[0]										:=		MachineSpecificationConvert.Base.SBDiameter.Minimal;
+			WrMachSpecificDataRaw.Raw1004[1]										:=		MachineSpecificationConvert.Base.SBDiameter.Maximal;
+			WrMachSpecificDataRaw.Raw1004[2]										:=		MachineSpecificationConvert.Base.WorkingAngle;
+			WrMachSpecificDataRaw.Raw1004[3]										:=		MachineSpecificationConvert.Base.BuzzerDeactTime;
+			WrMachSpecificDataRaw.Raw19310[0]										:=		MachineSpecificationConvert.UIConfiguration.StoringOptions.GrindingWheelStore;
+			WrMachSpecificDataRaw.Raw19310[1]										:=		MachineSpecificationConvert.UIConfiguration.StoringOptions.ToothShapeStore;
+			WrMachSpecificDataRaw.Raw19310[2]										:=		MachineSpecificationConvert.UIConfiguration.StoringOptions.OrderStore;
+			WrMachSpecificDataRaw.Raw19310[3]										:=		MachineSpecificationConvert.UIConfiguration.StoringOptions.OrderStackStore;
+			WrMachSpecificDataRaw.Raw19320[0]										:=		MachineSpecificationConvert.UIConfiguration.ProcessingOptions.OrderStackProcessChronology;
+			WrMachSpecificDataRaw.Raw19320[1]										:=		MachineSpecificationConvert.UIConfiguration.ProcessingOptions.StackOrderProcessChronology;
+			WrMachSpecificDataRaw.Raw2010[5]										:=		MachineSpecificationConvert.UIConfiguration.ToothConstruction.StandardTooth;
+			WrMachSpecificDataRaw.Raw2010[4]										:=		MachineSpecificationConvert.UIConfiguration.ToothConstruction.CurvedBackToothCalculation;
+			WrMachSpecificDataRaw.Raw2010[2]										:=		MachineSpecificationConvert.UIConfiguration.ToothConstruction.StraightBackToothCalculation;
+			WrMachSpecificDataRaw.Raw19001[0]										:=		MachineSpecificationConvert.UIConfiguration.ToothConstruction.ThinKerfToothLibrary;
+			WrMachSpecificDataRaw.Raw19001[1]										:=		MachineSpecificationConvert.UIConfiguration.ToothConstruction.ThinKerfToothCalculation;
+			WrMachSpecificDataRaw.Raw19001[3]										:=		MachineSpecificationConvert.UIConfiguration.ToothConstruction.TripleChipToothCalculation;
+			WrMachSpecificDataRaw.Raw19001[2]										:=		MachineSpecificationConvert.UIConfiguration.ToothConstruction.LorochToothLibrary;
+			(*--ThinKerfCuttingInsert---*)
+			WrMachSpecificDataRaw.Raw19907[0]										:=		MachineSpecificationConvert.UIConfiguration.ToothConstruction.TripleChipCuttingInsert.TripleChipCuttingInsertI ;
+			WrMachSpecificDataRaw.Raw19907[1]										:=		MachineSpecificationConvert.UIConfiguration.ToothConstruction.TripleChipCuttingInsert.TripleChipCuttingInsertL;
+			WrMachSpecificDataRaw.Raw19907[2]										:=		MachineSpecificationConvert.UIConfiguration.ToothConstruction.CuttingInsertPlateSeatCalculation;
+			(*--ThinKerfCuttingInsert---*)
+			WrMachSpecificDataRaw.Raw2010[0]										:=		MachineSpecificationConvert.UIConfiguration.ToothConstruction.SpecialToothLibrary;
+			WrMachSpecificDataRaw.Raw2010[1]										:=		MachineSpecificationConvert.UIConfiguration.ToothConstruction.VarioTooth;
+			WrMachSpecificDataRaw.Raw2010[3]										:=		MachineSpecificationConvert.UIConfiguration.ToothConstruction.CAD;
+			(*-------ThinKerfCuttingInsert------------------*)
+			WrMachSpecificDataRaw.Raw19890[0]										:=		MachineSpecificationConvert.UIConfiguration.ToothConstruction.ThinKerfCuttingInsert.ThinKerfCuttingInsertIC;
+			WrMachSpecificDataRaw.Raw19890[1]										:=		MachineSpecificationConvert.UIConfiguration.ToothConstruction.ThinKerfCuttingInsert.ThinKerfCuttingInsertLC;
+			WrMachSpecificDataRaw.Raw19890[2]										:=		MachineSpecificationConvert.UIConfiguration.ToothConstruction.ThinKerfCuttingInsert.ThinKerfCuttingInsertNC;
+			WrMachSpecificDataRaw.Raw19890[3]										:=		MachineSpecificationConvert.UIConfiguration.ToothConstruction.ThinKerfCuttingInsert.ThinKerfCuttingInsertOC;
+	(*		WrMachSpecificDataRaw.Raw19890[4]										:=		MachineSpecificationConvert.UIConfiguration.ToothConstruction.ThinKerfCuttingInsert.ThinKerfCuttingInsertSeatI;*)
+	(*		WrMachSpecificDataRaw.Raw19890[5]										:=		MachineSpecificationConvert.UIConfiguration.ToothConstruction.ThinKerfCuttingInsert.ThinKerfCuttingInsertSeatL;*)
+			WrMachSpecificDataRaw.Raw19905[0]										:=		MachineSpecificationConvert.UIConfiguration.ToothConstruction.CuttingInsertPlateSeat.CuttingInsertPlateSeatI;
+			WrMachSpecificDataRaw.Raw19905[1]										:=		MachineSpecificationConvert.UIConfiguration.ToothConstruction.CuttingInsertPlateSeat.CuttingInsertPlateSeatL;
+			WrMachSpecificDataRaw.Raw19892[0]										:=		MachineSpecificationConvert.UIConfiguration.ToothConstruction.ThinKerfGrindingOption.RelativeGrindingVelocityMinX;
+			WrMachSpecificDataRaw.Raw19892[1]										:=		MachineSpecificationConvert.UIConfiguration.ToothConstruction.ThinKerfGrindingOption.RelativeGrindingVelocityMinY;
+			WrMachSpecificDataRaw.Raw19892[2]										:=		MachineSpecificationConvert.UIConfiguration.ToothConstruction.ThinKerfGrindingOption.RelativeGrindingVelocityMinYr;
+			WrMachSpecificDataRaw.Raw19892[3]										:=		MachineSpecificationConvert.UIConfiguration.ToothConstruction.ThinKerfGrindingOption.RelativeGrindingVelocityClearanceLine;
+			WrMachSpecificDataRaw.Raw19894[0]										:=		MachineSpecificationConvert.UIConfiguration.ToothConstruction.ThinKerfGrindingOption.ShapeLengthCwDeltaMinX;
+			WrMachSpecificDataRaw.Raw19894[1]										:=		MachineSpecificationConvert.UIConfiguration.ToothConstruction.ThinKerfGrindingOption.ShapeLengthCwDeltaMinY;
+			WrMachSpecificDataRaw.Raw19894[2]										:=		MachineSpecificationConvert.UIConfiguration.ToothConstruction.ThinKerfGrindingOption.ShapeLengthCwDeltaMinYr;
+			WrMachSpecificDataRaw.Raw19894[3]										:=		MachineSpecificationConvert.UIConfiguration.ToothConstruction.ThinKerfGrindingOption.ShapeLengthCwDeltaClearanceLine;
+			WrMachSpecificDataRaw.Raw19896[0]										:=		MachineSpecificationConvert.UIConfiguration.ToothConstruction.ThinKerfGrindingOption.ShapeLengthCcwDeltaMinX;
+			WrMachSpecificDataRaw.Raw19896[1]										:=		MachineSpecificationConvert.UIConfiguration.ToothConstruction.ThinKerfGrindingOption.ShapeLengthCcwDeltaMinY;
+			WrMachSpecificDataRaw.Raw19896[2]										:=		MachineSpecificationConvert.UIConfiguration.ToothConstruction.ThinKerfGrindingOption.ShapeLengthCcwDeltaMinYr;
+			WrMachSpecificDataRaw.Raw19896[3]										:=		MachineSpecificationConvert.UIConfiguration.ToothConstruction.ThinKerfGrindingOption.ShapeLengthCcwDeltaClearanceLine;
+			(* No Of Touch Chamfer *)
+			WrMachSpecificDataRaw.Raw19865[0]										:=		MachineSpecificationConvert.UIConfiguration.OperatingMode.Touching.Chamfering.NoOfTouchingFront;
+			WrMachSpecificDataRaw.Raw19865[1]										:=		MachineSpecificationConvert.UIConfiguration.OperatingMode.Touching.Chamfering.NoOfTouchingRear;
+			WrMachSpecificDataRaw.Raw2020[1]										:=		MachineSpecificationConvert.UIConfiguration.OperatingMode.Touching.Chamfering.ChkExistingChamferBefSharpening;
+			WrMachSpecificDataRaw.Raw19866[0]										:=		MachineSpecificationConvert.UIConfiguration.OperatingMode.Touching.Chamfering.TouchPosition.FinishingToothActive;
+			WrMachSpecificDataRaw.Raw19866[1]										:=		MachineSpecificationConvert.UIConfiguration.OperatingMode.Touching.Chamfering.TouchPosition.PreCuttingToothActive;
+			WrMachSpecificDataRaw.Raw2021											:=		MachineSpecificationConvert.UIConfiguration.OperatingMode.Touching.ToothPitch.Plausibility;
+			WrMachSpecificDataRaw.Raw2022[0]										:=		MachineSpecificationConvert.UIConfiguration.OperatingMode.Touching.ToothPitch.NoOfPlausibiltyTests;
+			WrMachSpecificDataRaw.Raw2022[1]										:=		MachineSpecificationConvert.UIConfiguration.OperatingMode.Touching.ToothPitch.NoOfTeethPlausibility[0]	;
+			WrMachSpecificDataRaw.Raw2022[2]										:=		MachineSpecificationConvert.UIConfiguration.OperatingMode.Touching.ToothPitch.NoOfTeethPlausibility[1]	;
+			WrMachSpecificDataRaw.Raw2022[3]										:=		MachineSpecificationConvert.UIConfiguration.OperatingMode.Touching.ToothPitch.NoOfTeethPlausibility[2]	;
+			WrMachSpecificDataRaw.Raw2022[4]										:=		MachineSpecificationConvert.UIConfiguration.OperatingMode.Touching.ToothPitch.NoOfTeethPlausibility[3]	;
+			WrMachSpecificDataRaw.Raw2022[5]										:=		MachineSpecificationConvert.UIConfiguration.OperatingMode.Touching.ToothPitch.NoOfTeethPlausibility[4]	;
+
+			(*Teilungüberprüfung*)
+			WrMachSpecificDataRaw.Raw19885											:=		MachineSpecificationConvert.UIConfiguration.OperatingMode.Touching.ToothPitch.ToothPitchMeasuring.TKTMeasuringActive;
+			WrMachSpecificDataRaw.Raw19886											:=		MachineSpecificationConvert.UIConfiguration.OperatingMode.Touching.ToothPitch.ToothPitchMeasuring.TKTLargestDifferencePermissible;
+			WrMachSpecificDataRaw.Raw19887											:=		MachineSpecificationConvert.UIConfiguration.OperatingMode.Touching.ToothPitch.ToothPitchMeasuring.TKTDifferenceCompensationActive;
+			WrMachSpecificDataRaw.Raw19900											:=		MachineSpecificationConvert.UIConfiguration.OperatingMode.Touching.ToothPitch.ToothPitchMeasuring.TKTMeasuringLightBarrierActive;
+
+			WrMachSpecificDataRaw.Raw2023[0]										:=		MachineSpecificationConvert.UIConfiguration.OperatingMode.Touching.ToothPitchVario.Plausibility;
+			WrMachSpecificDataRaw.Raw2023[1]										:=		MachineSpecificationConvert.UIConfiguration.OperatingMode.Touching.ReCutting.ChkSBDiameterEquality;
+			WrMachSpecificDataRaw.Raw2023[2]										:=		MachineSpecificationConvert.UIConfiguration.OperatingMode.Chamfering.ChamferingDual;
+			WrMachSpecificDataRaw.Raw19000[0]										:=		MachineSpecificationConvert.UIConfiguration.OperatingMode.Chamfering.ChamferingAlternate;
+
+			(* FRed Chamfering InFeed *)
+			WrMachSpecificDataRaw.Raw19880[0]										:=		MachineSpecificationConvert.UIConfiguration.OperatingMode.Chamfering.CurvedBackToothCalculation.InFeedDefaultDIN;
+			WrMachSpecificDataRaw.Raw19881[0]										:=		MachineSpecificationConvert.UIConfiguration.OperatingMode.Chamfering.CurvedBackToothCalculation.InFeedDefault;
+			WrMachSpecificDataRaw.Raw19880[1]										:=		MachineSpecificationConvert.UIConfiguration.OperatingMode.Chamfering.StraightBackToothCalculation.InFeedDefaultDIN;
+			WrMachSpecificDataRaw.Raw19881[1]										:=		MachineSpecificationConvert.UIConfiguration.OperatingMode.Chamfering.StraightBackToothCalculation.InFeedDefault;
+			WrMachSpecificDataRaw.Raw19880[2]										:=		MachineSpecificationConvert.UIConfiguration.OperatingMode.Chamfering.ThinKerfToothCalculation.InFeedDefaultDIN;
+			WrMachSpecificDataRaw.Raw19881[2]										:=		MachineSpecificationConvert.UIConfiguration.OperatingMode.Chamfering.ThinKerfToothCalculation.InFeedDefault;
+			WrMachSpecificDataRaw.Raw19880[3]										:=		MachineSpecificationConvert.UIConfiguration.OperatingMode.Chamfering.LorochToothLibrary.InFeedDefaultDIN;
+			WrMachSpecificDataRaw.Raw19881[3]										:=		MachineSpecificationConvert.UIConfiguration.OperatingMode.Chamfering.LorochToothLibrary.InFeedDefault;
+			WrMachSpecificDataRaw.Raw19880[4]										:=		MachineSpecificationConvert.UIConfiguration.OperatingMode.Chamfering.ThinKerfToothLibrary.InFeedDefaultDIN;
+			WrMachSpecificDataRaw.Raw19881[4]										:=		MachineSpecificationConvert.UIConfiguration.OperatingMode.Chamfering.ThinKerfToothLibrary.InFeedDefault;
+			WrMachSpecificDataRaw.Raw19880[5]										:=		MachineSpecificationConvert.UIConfiguration.OperatingMode.Chamfering.SpecialToothLibrary.InFeedDefaultDIN;
+			WrMachSpecificDataRaw.Raw19881[5]										:=		MachineSpecificationConvert.UIConfiguration.OperatingMode.Chamfering.SpecialToothLibrary.InFeedDefault;
+
+			(* infeed correction chamfering *)
+			WrMachSpecificDataRaw.Raw2024[0]										:=		MachineSpecificationConvert.UIConfiguration.OperatingMode.Chamfering.InFeedCorrection.InFeedCorrectionMM.WithOutTHD.ChamferFront;
+			WrMachSpecificDataRaw.Raw2024[1]										:=		MachineSpecificationConvert.UIConfiguration.OperatingMode.Chamfering.InFeedCorrection.InFeedCorrectionMM.WithOutTHD.ChamferRear;
+			WrMachSpecificDataRaw.Raw19651[0]										:=		MachineSpecificationConvert.UIConfiguration.OperatingMode.Chamfering.InFeedCorrection.InFeedCorrectionMM.WithTHD.ChamferFront	;
+			WrMachSpecificDataRaw.Raw19651[1]										:=		MachineSpecificationConvert.UIConfiguration.OperatingMode.Chamfering.InFeedCorrection.InFeedCorrectionMM.WithTHD.ChamferRear	;
+			WrMachSpecificDataRaw.Raw19650[0]										:=		MachineSpecificationConvert.UIConfiguration.OperatingMode.Chamfering.InFeedCorrection.InFeedCorrectionMM.Unit;
+			WrMachSpecificDataRaw.Raw19650[1]										:=		MachineSpecificationConvert.UIConfiguration.OperatingMode.Chamfering.InFeedCorrection.InFeedCorrectionPercent.Unit;
+			WrMachSpecificDataRaw.Raw19651[2]										:=		MachineSpecificationConvert.UIConfiguration.OperatingMode.Chamfering.InFeedCorrection.InFeedCorrectionPercent.WithoutTHD.ChamferFront;
+			WrMachSpecificDataRaw.Raw19651[3]										:=		MachineSpecificationConvert.UIConfiguration.OperatingMode.Chamfering.InFeedCorrection.InFeedCorrectionPercent.WithoutTHD.ChamferRear;
+			WrMachSpecificDataRaw.Raw19651[4]										:=		MachineSpecificationConvert.UIConfiguration.OperatingMode.Chamfering.InFeedCorrection.InFeedCorrectionPercent.WithTHD.ChamferFront;
+			WrMachSpecificDataRaw.Raw19651[5]										:=		MachineSpecificationConvert.UIConfiguration.OperatingMode.Chamfering.InFeedCorrection.InFeedCorrectionPercent.WithTHD.ChamferRear;
+			(* infeed correction chamfering *)
+			WrMachSpecificDataRaw.Raw2024[2]										:=		MachineSpecificationConvert.UIConfiguration.OperatingMode.Chamfering.ReduceChamfer;
+			WrMachSpecificDataRaw.Raw2025[0]										:=		MachineSpecificationConvert.UIConfiguration.OperatingMode.EqualDiameterGrinding;
+			WrMachSpecificDataRaw.Raw2025[1]										:=		MachineSpecificationConvert.UIConfiguration.OperatingMode.SkewTooth;
+			(* ChipBreaker *)
+			WrMachSpecificDataRaw.Raw19850											:=		MachineSpecificationConvert.UIConfiguration.OperatingMode.ChipBreaker.EdgeDistance.EdgeDistanceDefault;
+			WrMachSpecificDataRaw.Raw19851											:=		MachineSpecificationConvert.UIConfiguration.OperatingMode.ChipBreaker.EdgeDistance.Absolute.Default;
+			WrMachSpecificDataRaw.Raw19852											:=		MachineSpecificationConvert.UIConfiguration.OperatingMode.ChipBreaker.EdgeDistance.Absolute.ForceDefault;
+			WrMachSpecificDataRaw.Raw19853											:=		MachineSpecificationConvert.UIConfiguration.OperatingMode.ChipBreaker.EdgeDistance.Relative.Default;
+			WrMachSpecificDataRaw.Raw19854											:=		MachineSpecificationConvert.UIConfiguration.OperatingMode.ChipBreaker.EdgeDistance.Relative.ForceDefault;
+			(* Fire extinguisher *)
+			(* ------------------------ *)
+			WrMachSpecificDataRaw.Raw2030[0]										:=		MachineSpecificationConvert.UIConfiguration.PositioningMode.TouchManHandWheel;
+			WrMachSpecificDataRaw.Raw2030[1]										:=		MachineSpecificationConvert.UIConfiguration.PositioningMode.TouchManKeyPad;
+			WrMachSpecificDataRaw.Raw2030[2]										:=		MachineSpecificationConvert.UIConfiguration.PositioningMode.TouchAuto;
+			WrMachSpecificDataRaw.Raw19300											:=		MachineSpecificationConvert.UIConfiguration.PositioningMode.TouchManHandWheelMode;
+			WrMachSpecificDataRaw.Raw19811											:=		MachineSpecificationConvert.UIConfiguration.PositioningMode.OperatingModeTouchOption;
+			(* History File Writing *)
+			WrMachSpecificDataRaw.Raw19868[0]										:=		MachineSpecificationConvert.UIConfiguration.HistoryFile.WriteFileOnError;
+			WrMachSpecificDataRaw.Raw19868[1]										:=		MachineSpecificationConvert.UIConfiguration.HistoryFile.WriteFileOnStateChange;
+			WrMachSpecificDataRaw.Raw19869											:=		MachineSpecificationConvert.UIConfiguration.HistoryFile.HistoryFileBuffer;
+
+			WrMachSpecificDataRaw.Raw19700											:=		MachineSpecificationConvert.UIVisualization.ShowLabel;
+			WrMachSpecificDataRaw.Raw19810											:=		MachineSpecificationConvert.UIVisualization.SawBladeAutomaticDetection;
+			WrMachSpecificDataRaw.Raw2050											:=		MachineSpecificationConvert.UIVisualization.OrderEditView.CorrectionXY;
+			(* WrMachSpecificDataRaw.Raw19810										:=		MachineSpecificationConvert.UIVisualization.OrderEditView.SawBladeMeasureAuto; *)
+			WrMachSpecificDataRaw.Raw2040[0]										:=		MachineSpecificationConvert.UIVisualization.OrderEditView.OperatingModePattern;
+			WrMachSpecificDataRaw.Raw19888											:=		MachineSpecificationConvert.UIVisualization.StackEditView.ExpandedOrders;
+			WrMachSpecificDataRaw.Raw19600											:=		MachineSpecificationConvert.UIVisualization.StackEditView.CachedStacks;
+			WrMachSpecificDataRaw.Raw2040[1]										:=		MachineSpecificationConvert.UIVisualization.StackEditView.OperatingModePattern;
+(* ---------------------------------------- UI Config ---------------------------------------------------------------------------- *)
+
+	(*
+	(*-----------------------------------------------------------------------------------------------------*)
+			
+															
+			
+			
+	
+			
+			
+		
+*)
+
+(* ------------------------------------ Peripheral Basic --------------------------------------------------------------------- *)
+			(* x axis *)
+			WrMachSpecificDataRaw.Raw3000											:=		MachineSpecificationConvert.PeripheralBasic.Axis.X.IsActive;
+			WrMachSpecificDataRaw.Raw3001[0]										:=		MachineSpecificationConvert.PeripheralBasic.Axis.X.Model;
+			WrMachSpecificDataRaw.Raw3001[1]										:=		MachineSpecificationConvert.PeripheralBasic.Axis.X.Vendor;
+			WrMachSpecificDataRaw.Raw3002[0]										:=		MachineSpecificationConvert.PeripheralBasic.Axis.X.EncoderResolution;
+			WrMachSpecificDataRaw.Raw3002[1]										:=		MachineSpecificationConvert.PeripheralBasic.Axis.X.GearRatio;
+			WrMachSpecificDataRaw.Raw3002[2]										:=		MachineSpecificationConvert.PeripheralBasic.Axis.X.GearBacklash;
+			WrMachSpecificDataRaw.Raw3002[3]										:=		MachineSpecificationConvert.PeripheralBasic.Axis.X.Velocity.JogFast;
+			WrMachSpecificDataRaw.Raw3002[4]										:=		MachineSpecificationConvert.PeripheralBasic.Axis.X.Velocity.JogSlow;
+			WrMachSpecificDataRaw.Raw3002[5]										:=		MachineSpecificationConvert.PeripheralBasic.Axis.X.Velocity.HomingFast;
+			WrMachSpecificDataRaw.Raw3002[6]										:=		MachineSpecificationConvert.PeripheralBasic.Axis.X.Velocity.HomingSlow;
+			WrMachSpecificDataRaw.Raw3002[7]										:=		MachineSpecificationConvert.PeripheralBasic.Axis.X.Velocity.MoveAbsFast;
+			WrMachSpecificDataRaw.Raw3002[8]										:=		MachineSpecificationConvert.PeripheralBasic.Axis.X.Velocity.MoveAbsSlow;
+			WrMachSpecificDataRaw.Raw3002[9]										:=		MachineSpecificationConvert.PeripheralBasic.Axis.X.Velocity.MoveAbsTPFast;
+			WrMachSpecificDataRaw.Raw3002[10]										:=		MachineSpecificationConvert.PeripheralBasic.Axis.X.Velocity.MoveAbsTPSlow;
+			WrMachSpecificDataRaw.Raw3002[11]										:=		MachineSpecificationConvert.PeripheralBasic.Axis.X.Position.HomingOffset;
+			(*---------------------------------------------------*)
+			WrMachSpecificDataRaw.Raw19898[0,0]										:=		MachineSpecificationConvert.PeripheralBasic.Axis.X.Velocity.TouchingHSS.Fast;
+			WrMachSpecificDataRaw.Raw19898[0,1]										:=		MachineSpecificationConvert.PeripheralBasic.Axis.X.Velocity.TouchingHSS.Slow;
+			WrMachSpecificDataRaw.Raw19898[1,0]										:=		MachineSpecificationConvert.PeripheralBasic.Axis.X.Velocity.TouchingCarbide.Fast;
+			WrMachSpecificDataRaw.Raw19898[1,1]										:=		MachineSpecificationConvert.PeripheralBasic.Axis.X.Velocity.TouchingCarbide.Slow	;
+			WrMachSpecificDataRaw.Raw19898[2,0]										:=		MachineSpecificationConvert.PeripheralBasic.Axis.X.Velocity.TouchingCermet.Fast	;
+			WrMachSpecificDataRaw.Raw19898[2,1]										:=		MachineSpecificationConvert.PeripheralBasic.Axis.X.Velocity.TouchingCermet.Slow	;
+			WrMachSpecificDataRaw.Raw19898[3,0]										:=		MachineSpecificationConvert.PeripheralBasic.Axis.X.Velocity.MeasuringToothPitchGW.Fast	;
+			WrMachSpecificDataRaw.Raw19898[3,1]										:=		MachineSpecificationConvert.PeripheralBasic.Axis.X.Velocity.MeasuringToothPitchGW.Slow;
+			WrMachSpecificDataRaw.Raw19898[4,0]										:=		MachineSpecificationConvert.PeripheralBasic.Axis.X.Velocity.MeasuringToothPitchLB.Fast;
+			WrMachSpecificDataRaw.Raw19898[4,1]										:=		MachineSpecificationConvert.PeripheralBasic.Axis.X.Velocity.MeasuringToothPitchLB.Slow;
+			(*--------------------------------------------------*)
+			WrMachSpecificDataRaw.Raw3300[0]										:=		LREAL_TO_REAL(MachineSpecificationConvert.PeripheralBasic.Axis.X.Calibration.SBDiameterIncrements);
+			WrMachSpecificDataRaw.Raw3300[1]										:=		LREAL_TO_REAL(MachineSpecificationConvert.PeripheralBasic.Axis.X.Calibration.SBDiameterMM);
+			(* y axis *)
+			WrMachSpecificDataRaw.Raw3100											:=		MachineSpecificationConvert.PeripheralBasic.Axis.Y.IsActive;
+			WrMachSpecificDataRaw.Raw3101[0]										:=		MachineSpecificationConvert.PeripheralBasic.Axis.Y.Model;
+			WrMachSpecificDataRaw.Raw3101[1]										:=		MachineSpecificationConvert.PeripheralBasic.Axis.Y.Vendor;
+			WrMachSpecificDataRaw.Raw3102[0]										:=		MachineSpecificationConvert.PeripheralBasic.Axis.Y.EncoderResolution;
+			WrMachSpecificDataRaw.Raw3102[1]										:=		MachineSpecificationConvert.PeripheralBasic.Axis.Y.GearRatio;
+			WrMachSpecificDataRaw.Raw3102[2]										:=		MachineSpecificationConvert.PeripheralBasic.Axis.Y.GearBacklash;
+			WrMachSpecificDataRaw.Raw3102[3]										:=		MachineSpecificationConvert.PeripheralBasic.Axis.Y.Velocity.JogFast;
+			WrMachSpecificDataRaw.Raw3102[4]										:=		MachineSpecificationConvert.PeripheralBasic.Axis.Y.Velocity.JogSlow;
+			WrMachSpecificDataRaw.Raw3102[5]										:=		MachineSpecificationConvert.PeripheralBasic.Axis.Y.Velocity.HomingFast;
+			WrMachSpecificDataRaw.Raw3102[6]										:=		MachineSpecificationConvert.PeripheralBasic.Axis.Y.Velocity.HomingSlow;
+			WrMachSpecificDataRaw.Raw3102[7]										:=		MachineSpecificationConvert.PeripheralBasic.Axis.Y.Velocity.MoveAbsFast;
+			WrMachSpecificDataRaw.Raw3102[8]										:=		MachineSpecificationConvert.PeripheralBasic.Axis.Y.Velocity.MoveAbsSlow;
+			WrMachSpecificDataRaw.Raw3102[9]										:=		MachineSpecificationConvert.PeripheralBasic.Axis.Y.Velocity.MoveAbsTPFast;
+			WrMachSpecificDataRaw.Raw3102[10]										:=		MachineSpecificationConvert.PeripheralBasic.Axis.Y.Velocity.MoveAbsTPSlow;
+			WrMachSpecificDataRaw.Raw3102[11]										:=		MachineSpecificationConvert.PeripheralBasic.Axis.Y.Position.HomingOffset;
+			(*---------------------------------------------------*)
+			WrMachSpecificDataRaw.Raw19898[5,0]										:=		MachineSpecificationConvert.PeripheralBasic.Axis.Y.Velocity.TouchingHSS.Fast;
+			WrMachSpecificDataRaw.Raw19898[5,1]										:=		MachineSpecificationConvert.PeripheralBasic.Axis.Y.Velocity.TouchingHSS.Slow;
+			WrMachSpecificDataRaw.Raw19898[6,0]										:=		MachineSpecificationConvert.PeripheralBasic.Axis.Y.Velocity.TouchingCarbide.Fast;
+			WrMachSpecificDataRaw.Raw19898[6,1]										:=		MachineSpecificationConvert.PeripheralBasic.Axis.Y.Velocity.TouchingCarbide.Slow	;
+			WrMachSpecificDataRaw.Raw19898[7,0]										:=		MachineSpecificationConvert.PeripheralBasic.Axis.Y.Velocity.TouchingCermet.Fast	;
+			WrMachSpecificDataRaw.Raw19898[7,1]										:=		MachineSpecificationConvert.PeripheralBasic.Axis.Y.Velocity.TouchingCermet.Slow	;
+			WrMachSpecificDataRaw.Raw19898[8,0]										:=		MachineSpecificationConvert.PeripheralBasic.Axis.Y.Velocity.MeasuringToothPitchGW.Fast	;
+			WrMachSpecificDataRaw.Raw19898[8,1]										:=		MachineSpecificationConvert.PeripheralBasic.Axis.Y.Velocity.MeasuringToothPitchGW.Slow;
+			WrMachSpecificDataRaw.Raw19898[9,0]										:=		MachineSpecificationConvert.PeripheralBasic.Axis.Y.Velocity.MeasuringToothPitchLB.Fast;
+			WrMachSpecificDataRaw.Raw19898[9,1]										:=		MachineSpecificationConvert.PeripheralBasic.Axis.Y.Velocity.MeasuringToothPitchLB.Slow;
+			(*--------------------------------------------------*)
+			WrMachSpecificDataRaw.Raw3103[0]										:=		LREAL_TO_REAL(MachineSpecificationConvert.PeripheralBasic.Axis.Y.Calibration.SBDiameterIncrements);
+			WrMachSpecificDataRaw.Raw3103[1]										:=		0;
+			WrMachSpecificDataRaw.Raw3103[2]										:=		LREAL_TO_REAL(MachineSpecificationConvert.PeripheralBasic.Axis.Y.Calibration.SBDiameterMM);
+			WrMachSpecificDataRaw.Raw3103[3]										:=		0;
+			(* z axis *)
+			WrMachSpecificDataRaw.Raw3200											:=		MachineSpecificationConvert.PeripheralBasic.Axis.Z.IsActive;
+			WrMachSpecificDataRaw.Raw3201[0]										:=		MachineSpecificationConvert.PeripheralBasic.Axis.Z.Model;
+			WrMachSpecificDataRaw.Raw3201[1]										:=		MachineSpecificationConvert.PeripheralBasic.Axis.Z.Vendor;
+			WrMachSpecificDataRaw.Raw3202[0]										:=		MachineSpecificationConvert.PeripheralBasic.Axis.Z.EncoderResolution;
+			WrMachSpecificDataRaw.Raw3202[1]										:=		MachineSpecificationConvert.PeripheralBasic.Axis.Z.GearRatio;
+			WrMachSpecificDataRaw.Raw3202[2]										:=		MachineSpecificationConvert.PeripheralBasic.Axis.Z.GearBacklash;
+			WrMachSpecificDataRaw.Raw3202[3]										:=		MachineSpecificationConvert.PeripheralBasic.Axis.Z.Velocity.JogFast;
+			WrMachSpecificDataRaw.Raw3202[4]										:=		MachineSpecificationConvert.PeripheralBasic.Axis.Z.Velocity.JogSlow;
+			WrMachSpecificDataRaw.Raw3202[5]										:=		MachineSpecificationConvert.PeripheralBasic.Axis.Z.Velocity.HomingFast;
+			WrMachSpecificDataRaw.Raw3202[6]										:=		MachineSpecificationConvert.PeripheralBasic.Axis.Z.Velocity.HomingSlow;
+			WrMachSpecificDataRaw.Raw3202[7]										:=		MachineSpecificationConvert.PeripheralBasic.Axis.Z.Velocity.MoveAbsFast;
+			WrMachSpecificDataRaw.Raw3202[8]										:=		MachineSpecificationConvert.PeripheralBasic.Axis.Z.Velocity.MoveAbsSlow;
+			WrMachSpecificDataRaw.Raw3202[9]										:=		MachineSpecificationConvert.PeripheralBasic.Axis.Z.Velocity.MoveAbsTPFast;
+			WrMachSpecificDataRaw.Raw3202[10]										:=		MachineSpecificationConvert.PeripheralBasic.Axis.Z.Velocity.MoveAbsTPSlow;
+			WrMachSpecificDataRaw.Raw3202[11]										:=		MachineSpecificationConvert.PeripheralBasic.Axis.Z.Position.HomingOffset;
+			(*---------------------------------------------------*)
+			WrMachSpecificDataRaw.Raw19898[10,0]										:=		MachineSpecificationConvert.PeripheralBasic.Axis.Z.Velocity.TouchingHSS.Fast;
+			WrMachSpecificDataRaw.Raw19898[10,1]										:=		MachineSpecificationConvert.PeripheralBasic.Axis.Z.Velocity.TouchingHSS.Slow;
+			WrMachSpecificDataRaw.Raw19898[11,0]										:=		MachineSpecificationConvert.PeripheralBasic.Axis.Z.Velocity.TouchingCarbide.Fast;
+			WrMachSpecificDataRaw.Raw19898[11,1]										:=		MachineSpecificationConvert.PeripheralBasic.Axis.Z.Velocity.TouchingCarbide.Slow	;
+			WrMachSpecificDataRaw.Raw19898[12,0]										:=		MachineSpecificationConvert.PeripheralBasic.Axis.Z.Velocity.TouchingCermet.Fast	;
+			WrMachSpecificDataRaw.Raw19898[12,1]										:=		MachineSpecificationConvert.PeripheralBasic.Axis.Z.Velocity.TouchingCermet.Slow	;
+			WrMachSpecificDataRaw.Raw19898[13,0]										:=		MachineSpecificationConvert.PeripheralBasic.Axis.Z.Velocity.MeasuringToothPitchGW.Fast	;
+			WrMachSpecificDataRaw.Raw19898[13,1]										:=		MachineSpecificationConvert.PeripheralBasic.Axis.Z.Velocity.MeasuringToothPitchGW.Slow;
+			WrMachSpecificDataRaw.Raw19898[14,0]										:=		MachineSpecificationConvert.PeripheralBasic.Axis.Z.Velocity.MeasuringToothPitchLB.Fast;
+			WrMachSpecificDataRaw.Raw19898[14,1]										:=		MachineSpecificationConvert.PeripheralBasic.Axis.Z.Velocity.MeasuringToothPitchLB.Slow;
+			(*--------------------------------------------------*)
+			WrMachSpecificDataRaw.Raw3203[0]										:=		LREAL_TO_REAL(MachineSpecificationConvert.PeripheralBasic.Axis.Z.Calibration.SBDiameterIncrements);
+			WrMachSpecificDataRaw.Raw3203[1]										:=		0;
+			WrMachSpecificDataRaw.Raw3203[2]										:=		LREAL_TO_REAL(MachineSpecificationConvert.PeripheralBasic.Axis.Z.Calibration.SBDiameterMM);
+			WrMachSpecificDataRaw.Raw3203[3]										:=		0;
+			(* position axis *)
+			WrMachSpecificDataRaw.Raw3003[0]										:=		REAL_TO_LREAL(MachineSpecificationConvert.PeripheralBasic.Axis.Positions.HandOver);
+			WrMachSpecificDataRaw.Raw3003[1]										:=		REAL_TO_LREAL(MachineSpecificationConvert.PeripheralBasic.Axis.Positions.DistGWCenterToWorkPoint);
+			WrMachSpecificDataRaw.Raw19460											:=		MachineSpecificationConvert.PeripheralBasic.Axis.Positions.Homing;
+			(* options axis *)
+			WrMachSpecificDataRaw.Raw19655[0]										:=		MachineSpecificationConvert.PeripheralBasic.Axis.Options.DisableZAxisTouchError;
+			(* coolant/filter system *)
+			(* CoolantSystem *)
+			WrMachSpecificDataRaw.Raw19814											:=		MachineSpecificationConvert.PeripheralBasic.CoolantFilterSystem.CoolantSystem.CoolantSystem;
+			(* FeedRateCorrection *)
+			WrMachSpecificDataRaw.Raw19815											:=		MachineSpecificationConvert.PeripheralBasic.CoolantFilterSystem.CoolantSystem.FeedRateCorrectionCoolantSystem;
+			(* chiller *)
+			WrMachSpecificDataRaw.Raw4000											:=		MachineSpecificationConvert.PeripheralBasic.CoolantFilterSystem.Chiller.IsActive;
+			WrMachSpecificDataRaw.Raw4001											:=		MachineSpecificationConvert.PeripheralBasic.CoolantFilterSystem.Chiller.SwitchOffDelay;
+			WrMachSpecificDataRaw.Raw4002											:=		MachineSpecificationConvert.PeripheralBasic.CoolantFilterSystem.Chiller.EnableErrorMsgLimitSwitch;
+			(* coolant pump *)
+			WrMachSpecificDataRaw.Raw4100											:=		MachineSpecificationConvert.PeripheralBasic.CoolantFilterSystem.CoolantPump.IsActive;
+			WrMachSpecificDataRaw.Raw4101											:=		MachineSpecificationConvert.PeripheralBasic.CoolantFilterSystem.CoolantPump.SwitchOffDelay;
+			WrMachSpecificDataRaw.Raw4102											:=		MachineSpecificationConvert.PeripheralBasic.CoolantFilterSystem.CoolantPump.EnableErrorMsgLimitSwitch;
+			(* filter *)
+			WrMachSpecificDataRaw.Raw4200											:=		MachineSpecificationConvert.PeripheralBasic.CoolantFilterSystem.Filter.IsActive;
+			WrMachSpecificDataRaw.Raw4201											:=		MachineSpecificationConvert.PeripheralBasic.CoolantFilterSystem.Filter.SwitchOffDelay;
+			WrMachSpecificDataRaw.Raw4202											:=		MachineSpecificationConvert.PeripheralBasic.CoolantFilterSystem.Filter.EnableErrorMsgLimitSwitch;
+			(* return feed pump *)
+			WrMachSpecificDataRaw.Raw4300											:=		MachineSpecificationConvert.PeripheralBasic.CoolantFilterSystem.ReturnFeedPump.IsActive;
+			WrMachSpecificDataRaw.Raw4301											:=		MachineSpecificationConvert.PeripheralBasic.CoolantFilterSystem.ReturnFeedPump.SwitchOffDelay;
+			WrMachSpecificDataRaw.Raw4302											:=		MachineSpecificationConvert.PeripheralBasic.CoolantFilterSystem.ReturnFeedPump.EnableErrorMsgLimitSwitch;
+			(* cartridge counter *)
+			WrMachSpecificDataRaw.Raw4400[0]										:=		MachineSpecificationConvert.PeripheralBasic.CoolantFilterSystem.CartridgeCounter.Carbide;
+			WrMachSpecificDataRaw.Raw4400[1]										:=		MachineSpecificationConvert.PeripheralBasic.CoolantFilterSystem.CartridgeCounter.CerMet;
+			WrMachSpecificDataRaw.Raw4400[2]										:=		MachineSpecificationConvert.PeripheralBasic.CoolantFilterSystem.CartridgeCounter.HSS;
+			(* Extraction *)
+			WrMachSpecificDataRaw.Raw5000											:=		MachineSpecificationConvert.PeripheralBasic.Extraction.IsActive;
+			WrMachSpecificDataRaw.Raw5001											:=		MachineSpecificationConvert.PeripheralBasic.Extraction.SwitchOffDelay;
+			WrMachSpecificDataRaw.Raw19870											:=		MachineSpecificationConvert.PeripheralBasic.Extraction.ExternalMonitoring.IsActive;
+			(* grinding head *)
+			WrMachSpecificDataRaw.Raw6000											:=		MachineSpecificationConvert.PeripheralBasic.GrindingHead.GrindingHeadType;
+			WrMachSpecificDataRaw.Raw19820											:=		MachineSpecificationConvert.PeripheralBasic.GrindingHead.GrindingHeadNotInMiddlePosProcessEnd;
+			(* grinding wheel *)
+			(* cbn *)
+			WrMachSpecificDataRaw.Raw7000											:=		MachineSpecificationConvert.PeripheralBasic.GrindingWheel.CBN.IsActive;
+			WrMachSpecificDataRaw.Raw7001											:=		MachineSpecificationConvert.PeripheralBasic.GrindingWheel.CBN.ProposalDirection;
+			WrMachSpecificDataRaw.Raw7002[0]										:=		MachineSpecificationConvert.PeripheralBasic.GrindingWheel.CBN.Velocity.Minimal;
+			WrMachSpecificDataRaw.Raw7002[1]										:=		MachineSpecificationConvert.PeripheralBasic.GrindingWheel.CBN.Velocity.Nominal;
+			WrMachSpecificDataRaw.Raw7002[2]										:=		MachineSpecificationConvert.PeripheralBasic.GrindingWheel.CBN.Velocity.Maximal;
+			(* diamond *)
+			WrMachSpecificDataRaw.Raw7100											:=		MachineSpecificationConvert.PeripheralBasic.GrindingWheel.Diamond.Carbide.IsActive;
+			WrMachSpecificDataRaw.Raw7101											:=		MachineSpecificationConvert.PeripheralBasic.GrindingWheel.Diamond.Carbide.ProposalDirection;
+			WrMachSpecificDataRaw.Raw7102[0]										:=		MachineSpecificationConvert.PeripheralBasic.GrindingWheel.Diamond.Carbide.Velocity.Minimal;
+			WrMachSpecificDataRaw.Raw7102[1]										:=		MachineSpecificationConvert.PeripheralBasic.GrindingWheel.Diamond.Carbide.Velocity.Nominal;
+			WrMachSpecificDataRaw.Raw7102[2]										:=		MachineSpecificationConvert.PeripheralBasic.GrindingWheel.Diamond.Carbide.Velocity.Maximal;
+			WrMachSpecificDataRaw.Raw7200											:=		MachineSpecificationConvert.PeripheralBasic.GrindingWheel.Diamond.Cermet.IsActive;
+			WrMachSpecificDataRaw.Raw7201											:=		MachineSpecificationConvert.PeripheralBasic.GrindingWheel.Diamond.Cermet.ProposalDirection;
+			WrMachSpecificDataRaw.Raw7202[0]										:=		MachineSpecificationConvert.PeripheralBasic.GrindingWheel.Diamond.Cermet.Velocity.Minimal;
+			WrMachSpecificDataRaw.Raw7202[1]										:=		MachineSpecificationConvert.PeripheralBasic.GrindingWheel.Diamond.Cermet.Velocity.Nominal;
+			WrMachSpecificDataRaw.Raw7202[2]										:=		MachineSpecificationConvert.PeripheralBasic.GrindingWheel.Diamond.Cermet.Velocity.Maximal;
+			(* dressing *)
+			WrMachSpecificDataRaw.Raw7300											:=		MachineSpecificationConvert.PeripheralBasic.GrindingWheel.Dressing.IsActive;
+			WrMachSpecificDataRaw.Raw7301											:=		MachineSpecificationConvert.PeripheralBasic.GrindingWheel.Dressing.ProposalDirection;
+			WrMachSpecificDataRaw.Raw7302[0]										:=		MachineSpecificationConvert.PeripheralBasic.GrindingWheel.Dressing.Velocity.Minimal;
+			WrMachSpecificDataRaw.Raw7302[1]										:=		MachineSpecificationConvert.PeripheralBasic.GrindingWheel.Dressing.Velocity.Nominal;
+			WrMachSpecificDataRaw.Raw7302[2]										:=		MachineSpecificationConvert.PeripheralBasic.GrindingWheel.Dressing.Velocity.Maximal;
+			(* lubrication *)
+			WrMachSpecificDataRaw.Raw8000[0]										:=		MachineSpecificationConvert.PeripheralBasic.Lubrication.Counter	;
+			WrMachSpecificDataRaw.Raw8000[1]										:=		MachineSpecificationConvert.PeripheralBasic.Lubrication.Pulse;
+			(* safety circuit Model *)
+			WrMachSpecificDataRaw.Raw18000											:=		MachineSpecificationConvert.PeripheralBasic.SafetyCircuit.Model;
+			(*Safety Circuit Option: With/Without Enabling Switches*)
+			WrMachSpecificDataRaw.Raw19833											:=		MachineSpecificationConvert.PeripheralBasic.SafetyCircuit.Option;
+(* ------------------------------------ Peripheral Basic --------------------------------------------------------------------- *)
+
+(* -------------------------------- Peripheral Optional --------------------------------------------------------------------- *)
+			(* chip breaker *)
+			WrMachSpecificDataRaw.Raw9000											:=		MachineSpecificationConvert.PeripheralOptional.ChipBreaker.IsActive;
+			WrMachSpecificDataRaw.Raw9001											:=		MachineSpecificationConvert.PeripheralOptional.ChipBreaker.Model;
+			WrMachSpecificDataRaw.Raw9002[0]										:=		MachineSpecificationConvert.PeripheralOptional.ChipBreaker.XCorrToothTipCW;
+			WrMachSpecificDataRaw.Raw9002[1]										:=		MachineSpecificationConvert.PeripheralOptional.ChipBreaker.ZPosCorrectionResharpRecut;
+			WrMachSpecificDataRaw.Raw9003[0]										:=		MachineSpecificationConvert.PeripheralOptional.ChipBreaker.GrindingWheel.Diameter.Minimal;
+			WrMachSpecificDataRaw.Raw9003[1]										:=		MachineSpecificationConvert.PeripheralOptional.ChipBreaker.GrindingWheel.Diameter.Maximal;
+			WrMachSpecificDataRaw.Raw9003[2]										:=		MachineSpecificationConvert.PeripheralOptional.ChipBreaker.ToothHeight.Minimal;
+			WrMachSpecificDataRaw.Raw9003[3]										:=		MachineSpecificationConvert.PeripheralOptional.ChipBreaker.ToothHeight.Maximal;
+			WrMachSpecificDataRaw.Raw19840[0]										:=		MachineSpecificationConvert.PeripheralOptional.ChipBreaker.GrindingWheel.Diameter.Nominal;
+			WrMachSpecificDataRaw.Raw19840[1]										:=		MachineSpecificationConvert.PeripheralOptional.ChipBreaker.GrindingWheel.Width.Maximal;
+			WrMachSpecificDataRaw.Raw19840[2]										:=		MachineSpecificationConvert.PeripheralOptional.ChipBreaker.GrindingWheel.Width.Minimal;
+			WrMachSpecificDataRaw.Raw19840[3]										:=		MachineSpecificationConvert.PeripheralOptional.ChipBreaker.GrindingWheel.Width.Nominal;
+			(*Edge Offset*)
+			WrMachSpecificDataRaw.RAW19839										:=		MachineSpecificationConvert.PeripheralOptional.ChipBreaker.Notch.SBEdgeOffset;
+			(*Chip Breaker Type*)
+			WrMachSpecificDataRaw.Raw19835											:=		MachineSpecificationConvert.PeripheralOptional.ChipBreaker.Notch.Positioning;
+			WrMachSpecificDataRaw.Raw19200[0]										:=		MachineSpecificationConvert.PeripheralOptional.ChipBreaker.ToothPitch.Minimal;
+			WrMachSpecificDataRaw.Raw19200[1]										:=		MachineSpecificationConvert.PeripheralOptional.ChipBreaker.ToothPitch.Maximal;
+			WrMachSpecificDataRaw.Raw19201[0]										:=		MachineSpecificationConvert.PeripheralOptional.ChipBreaker.XOffSet;
+			WrMachSpecificDataRaw.Raw19201[1]										:=		MachineSpecificationConvert.PeripheralOptional.ChipBreaker.YOffSet;
+			WrMachSpecificDataRaw.Raw19830[0]										:=		MachineSpecificationConvert.PeripheralOptional.ChipBreaker.YDistanceHomingTouchPos;
+			WrMachSpecificDataRaw.Raw19830[1]										:=		MachineSpecificationConvert.PeripheralOptional.ChipBreaker.ZDeltaFrontRearPos;
+			(* fire extinguisher *)
+			WrMachSpecificDataRaw.Raw10000[0]										:=		MachineSpecificationConvert.PeripheralOptional.FireExtinguisher.Auto;
+			WrMachSpecificDataRaw.Raw10000[1]										:=		MachineSpecificationConvert.PeripheralOptional.FireExtinguisher.Man;
+			(* flange handler *)
+			WrMachSpecificDataRaw.Raw11000											:=		MachineSpecificationConvert.PeripheralOptional.FlangeHandler.Model;
+			WrMachSpecificDataRaw.Raw11001											:=		MachineSpecificationConvert.PeripheralOptional.FlangeHandler.IsActive;
+			(* light barrier *)
+			WrMachSpecificDataRaw.Raw12000											:=		MachineSpecificationConvert.PeripheralOptional.LightBarrier.IsActive;
+			WrMachSpecificDataRaw.Raw12001											:=		MachineSpecificationConvert.PeripheralOptional.LightBarrier.Position;
+			WrMachSpecificDataRaw.Raw19710											:=		MachineSpecificationConvert.PeripheralOptional.LightBarrier.PositionOffset;
+			WrMachSpecificDataRaw.Raw12002											:=		MachineSpecificationConvert.PeripheralOptional.LightBarrier.SawBladeWidthMeasure.IsActive;
+			WrMachSpecificDataRaw.Raw12003[0]										:=		MachineSpecificationConvert.PeripheralOptional.LightBarrier.SawBladeWidthMeasure.GapWidthSensor;
+			WrMachSpecificDataRaw.Raw12003[1]										:=		MachineSpecificationConvert.PeripheralOptional.LightBarrier.SawBladeWidthMeasure.CorrectMaxWidth;
+			WrMachSpecificDataRaw.Raw19831											:=		MachineSpecificationConvert.PeripheralOptional.LightBarrier.SawBladeWidthMeasure.WidthTolerance;
+			WrMachSpecificDataRaw.Raw19902											:=		MachineSpecificationConvert.PeripheralOptional.LightBarrier.OffsetTKTMeasuring;
+			(* positioning sensor *)
+			WrMachSpecificDataRaw.Raw19800											:= 		MachineSpecificationConvert.PeripheralOptional.PositioningSensor.IsActive;
+			WrMachSpecificDataRaw.Raw19801											:=		MachineSpecificationConvert.PeripheralOptional.PositioningSensor.Model;
+			WrMachSpecificDataRaw.Raw13000[0]										:=		FALSE;
+			WrMachSpecificDataRaw.Raw13000[1]										:=		FALSE;
+			WrMachSpecificDataRaw.Raw13000[2]										:=		FALSE;
+			WrMachSpecificDataRaw.Raw13000[3]										:=		FALSE;
+			(* loader *)
+			WrMachSpecificDataRaw.Raw14000											:=		MachineSpecificationConvert.PeripheralOptional.Loader.IsActive;
+			WrMachSpecificDataRaw.Raw14001[0]										:=		MachineSpecificationConvert.PeripheralOptional.Loader.SBDiameter.Minimal;
+			WrMachSpecificDataRaw.Raw14001[1]										:=		MachineSpecificationConvert.PeripheralOptional.Loader.SBDiameter.Maximal;
+			WrMachSpecificDataRaw.Raw14002											:=		0; (* old *)
+			(* saw blade clamping *)
+			WrMachSpecificDataRaw.Raw15000[0]										:=		MachineSpecificationConvert.PeripheralOptional.SawBladeClamping.Auto;
+			WrMachSpecificDataRaw.Raw15000[1]										:=		MachineSpecificationConvert.PeripheralOptional.SawBladeClamping.Man;
+			(* saw blade handler *)
+			WrMachSpecificDataRaw.Raw16000											:=		MachineSpecificationConvert.PeripheralOptional.SawBladeHandler.IsActive;
+			WrMachSpecificDataRaw.Raw16001											:=		MachineSpecificationConvert.PeripheralOptional.SawBladeHandler.Model;
+			WrMachSpecificDataRaw.Raw16002[0]										:=		MachineSpecificationConvert.PeripheralOptional.SawBladeHandler.Positions.UnfinishedSawBlade;
+			WrMachSpecificDataRaw.Raw16002[1]										:=		MachineSpecificationConvert.PeripheralOptional.SawBladeHandler.Positions.FinishedSawBlade;
+			WrMachSpecificDataRaw.Raw16002[2]										:=		MachineSpecificationConvert.PeripheralOptional.SawBladeHandler.Positions.SawBladeHolder;
+			WrMachSpecificDataRaw.Raw16002[3]										:=		MachineSpecificationConvert.PeripheralOptional.SawBladeHandler.Positions.FlangeSawBladeHolder;
+			WrMachSpecificDataRaw.Raw16002[4]										:=		MachineSpecificationConvert.PeripheralOptional.SawBladeHandler.Positions.FlangeHolder;
+			(* support bracket *)
+			WrMachSpecificDataRaw.Raw17000											:=		MachineSpecificationConvert.PeripheralOptional.SupportBracket.IsActive;
+			WrMachSpecificDataRaw.Raw17001											:=		MachineSpecificationConvert.PeripheralOptional.SupportBracket.Model;
+			WrMachSpecificDataRaw.Raw17002[0]										:=		MachineSpecificationConvert.PeripheralOptional.SupportBracket.OpMode.Auto;
+			WrMachSpecificDataRaw.Raw17002[1]										:=		MachineSpecificationConvert.PeripheralOptional.SupportBracket.OpMode.Man;
+			WrMachSpecificDataRaw.Raw17002[2]										:=		MachineSpecificationConvert.PeripheralOptional.SupportBracket.Message.IsActive;
+			WrMachSpecificDataRaw.Raw19340											:=		MachineSpecificationConvert.PeripheralOptional.SupportBracket.Message.Delay;
+			(* independence *)
+			(* loader *)
+			WrMachSpecificDataRaw.Raw19400[0]										:=		MachineSpecificationConvert.PeripheralOptional.Loader.Model;
+			WrMachSpecificDataRaw.Raw19400[1]										:=		MachineSpecificationConvert.PeripheralOptional.Loader.SharpenerLoaderDoorModel;
+			WrMachSpecificDataRaw.Raw19410[0]										:=		MachineSpecificationConvert.PeripheralOptional.Loader.RotationVelocity.HomingFast;
+			WrMachSpecificDataRaw.Raw19410[1]										:=		MachineSpecificationConvert.PeripheralOptional.Loader.RotationVelocity.HomingSlow;
+			WrMachSpecificDataRaw.Raw19410[2]										:=		MachineSpecificationConvert.PeripheralOptional.Loader.RotationVelocity.JogFast;
+			WrMachSpecificDataRaw.Raw19410[3]										:=		MachineSpecificationConvert.PeripheralOptional.Loader.RotationVelocity.JogSlow;
+			WrMachSpecificDataRaw.Raw19410[4]										:=		MachineSpecificationConvert.PeripheralOptional.Loader.RotationVelocity.MoveAutoFast;
+			WrMachSpecificDataRaw.Raw19410[5]										:=		MachineSpecificationConvert.PeripheralOptional.Loader.RotationVelocity.MoveAutoSlow;
+			(*New Loader Arbor*)
+			WrMachSpecificDataRaw.Raw19500											:=		MachineSpecificationConvert.PeripheralOptional.Loader.ArborNumber;							(*New, *)
+			WrMachSpecificDataRaw.Raw19510											:=		MachineSpecificationConvert.PeripheralOptional.Loader.ArborNumberSource;						(*New, *)
+			(* hydraulics *)
+			WrMachSpecificDataRaw.Raw19420											:=		MachineSpecificationConvert.PeripheralOptional.Hydraulics.IsActive;
+			(* voltage monitoring *)
+			WrMachSpecificDataRaw.Raw19430											:=		MachineSpecificationConvert.PeripheralOptional.VoltageMonitoring.IsActive;
+			(* lubrication circuit 2 *)
+			WrMachSpecificDataRaw.Raw19440											:=		MachineSpecificationConvert.PeripheralBasic.Lubrication.Circuit2.IsActive;
+			WrMachSpecificDataRaw.Raw19441[0]										:=		MachineSpecificationConvert.PeripheralBasic.Lubrication.Circuit2.Counter;
+			WrMachSpecificDataRaw.Raw19441[1]										:=		MachineSpecificationConvert.PeripheralBasic.Lubrication.Circuit2.Pulse;
+			(* ethercat *)
+			WrMachSpecificDataRaw.Raw19450											:=		MachineSpecificationConvert.PeripheralBasic.EtherCat.NoOfMaster;
+			(*New CachedStacks*)
+			WrMachSpecificDataRaw.Raw19550											:=		MachineSpecificationConvert.UIVisualization.StackEditView.CachedStacks;						(*New, *)
+			(* remote monitoring *)
+			WrMachSpecificDataRaw.Raw19825[0]										:=		MachineSpecificationConvert.PeripheralOptional.RemoteMonitoring.BatchCounter.IsActive;			(*New, *)
+			WrMachSpecificDataRaw.Raw19825[1]										:=		MachineSpecificationConvert.PeripheralOptional.RemoteMonitoring.ProcessDone.IsActive;			(*New, *)
+			WrMachSpecificDataRaw.Raw19825[2]										:=		MachineSpecificationConvert.PeripheralOptional.RemoteMonitoring.ProcessError.IsActive;			(*New, *)
+			WrMachSpecificDataRaw.Raw19856											:=		MachineSpecificationConvert.PeripheralOptional.RemoteMonitoring.FireExtExternalWarning.IsActive;	(*New, *)
+			(* Grinding Wheel Cover *)
+			WrMachSpecificDataRaw.Raw19860											 := 		MachineSpecificationConvert.PeripheralBasic.GrindingHead.GrindingWheelCover;
+
+			(* res *)
+			WrMachSpecificDataRaw.Raw19655[1]										:=		0;
+			WrMachSpecificDataRaw.Raw19655[2]										:=		0;
+			WrMachSpecificDataRaw.Raw19655[3]										:=		0;
+			WrMachSpecificDataRaw.Raw19655[4]										:=		0;
+			WrMachSpecificDataRaw.Raw11002[0]										:=		0;
+			WrMachSpecificDataRaw.Raw11002[1]										:=		0;
+			WrMachSpecificDataRaw.Raw11002[2]										:=		0;
+			WrMachSpecificDataRaw.Raw11002[3]										:=		0;
+			WrMachSpecificDataRaw.Raw11002[4]										:=		0;
+			WrMachSpecificDataRaw.Raw11002[5]										:=		0;
+			WrMachSpecificDataRaw.Raw11002[6]										:=		0;
+			WrMachSpecificDataRaw.Raw11002[7]										:=		0;
+			WrMachSpecificDataRaw.Raw11002[8]										:=		0;
+			WrMachSpecificDataRaw.Raw11002[9]										:=		0;
+			WrMachSpecificDataRaw.Raw11002[10]										:=		0;
+			WrMachSpecificDataRaw.Raw11002[11]										:=		0;
+			
+			WrMachSpecificDataRaw.Raw19908[0] 										:=		MachineSpecificationConvert.UIVisualization.StackEditView.SelectMultipleOrders;
+			WrMachSpecificDataRaw.Raw19908[1] 										:= 		MachineSpecificationConvert.UIVisualization.StackEditView.SelectMultipleStacks;
+			
+			
+			(* HardItem *)
+					(* base *)
+						(* twincat version *) // INT
+						WrMachSpecificDataRaw.Raw19910								:=		MachineSpecificationConvert.HardItem.Base.TwinCatVersion;
+						(* sawblade dimension limits *) // ARRAY[0..7] OF REAL;
+						WrMachSpecificDataRaw.Raw19912[0]							:=		MachineSpecificationConvert.HardItem.Base.SBDimensionLimits.BodyWidth.Maximal;
+						WrMachSpecificDataRaw.Raw19912[1]							:=		MachineSpecificationConvert.HardItem.Base.SBDimensionLimits.BodyWidth.Minimal;		
+						WrMachSpecificDataRaw.Raw19912[2]							:=		MachineSpecificationConvert.HardItem.Base.SBDimensionLimits.BundWidth.Maximal;			
+						WrMachSpecificDataRaw.Raw19912[3]							:=		MachineSpecificationConvert.HardItem.Base.SBDimensionLimits.BundWidth.Minimal;			
+						WrMachSpecificDataRaw.Raw19912[4]							:=		MachineSpecificationConvert.HardItem.Base.SBDimensionLimits.CarbideTipWidth.Maximal;	
+						WrMachSpecificDataRaw.Raw19912[5]							:=		MachineSpecificationConvert.HardItem.Base.SBDimensionLimits.CarbideTipWidth.Minimal;			
+						WrMachSpecificDataRaw.Raw19912[6]							:=		MachineSpecificationConvert.HardItem.Base.SBDimensionLimits.SBDiameter.Maximal;
+						WrMachSpecificDataRaw.Raw19912[7]							:=		MachineSpecificationConvert.HardItem.Base.SBDimensionLimits.SBDiameter.Minimal;				
+				
+						(* working angle *) // REAL
+						WrMachSpecificDataRaw.Raw19914								:=		MachineSpecificationConvert.HardItem.Base.WorkingAngle;
+					(* uiconfiguration *)
+						(* storing options *) // BOOL
+						WrMachSpecificDataRaw.Raw19916								:=		MachineSpecificationConvert.HardItem.UIConfiguration.StoringOptions.WorkPieceManagement.IsActive;
+						(* positioning mode *)	// ARRAY[0..2] OF BOOL
+						WrMachSpecificDataRaw.Raw19918[0]							:=		MachineSpecificationConvert.HardItem.UIConfiguration.PositioningMode.TouchAuto;
+						WrMachSpecificDataRaw.Raw19918[1]							:=		MachineSpecificationConvert.HardItem.UIConfiguration.PositioningMode.TouchManCrsKeys;
+						WrMachSpecificDataRaw.Raw19918[2]							:=		MachineSpecificationConvert.HardItem.UIConfiguration.PositioningMode.TouchManHandWheel;
+						(* chamfering *) // BOOL
+						WrMachSpecificDataRaw.Raw19920								:=		MachineSpecificationConvert.HardItem.UIConfiguration.OperatingMode.Chamfering.IsActive;
+						(* chamfering - chamfer width default, main cutting edge default *) // ARRAY[0..1] OF BOOL
+						WrMachSpecificDataRaw.Raw19922[0]							:=		MachineSpecificationConvert.HardItem.UIConfiguration.OperatingMode.Chamfering.ChamferWidthDefault;
+						WrMachSpecificDataRaw.Raw19922[1]							:=		MachineSpecificationConvert.HardItem.UIConfiguration.OperatingMode.Chamfering.MainCuttingEdgeDefault;
+						(* chamfering - protection chamfer *) // ARRAY[0..1] OF REAL
+						WrMachSpecificDataRaw.Raw19924[0]							:=		MachineSpecificationConvert.HardItem.UIConfiguration.OperatingMode.Chamfering.ProtectionChamfer.DefaultValueAngleDEG;
+						WrMachSpecificDataRaw.Raw19924[1]							:=		MachineSpecificationConvert.HardItem.UIConfiguration.OperatingMode.Chamfering.ProtectionChamfer.DefaultValueWidthMM;
+						(* chamfering - protection chamfer 2 *) // ARRAY[0..1] OF REAL
+						WrMachSpecificDataRaw.Raw19926[0]							:=		MachineSpecificationConvert.HardItem.UIConfiguration.OperatingMode.Chamfering.ProtectionChamfer2.DefaultValueAngleDEG;
+						WrMachSpecificDataRaw.Raw19926[1]							:=		MachineSpecificationConvert.HardItem.UIConfiguration.OperatingMode.Chamfering.ProtectionChamfer2.DefaultValueWidthMM;
+						(* cutting insert blade seat *) // BOOL
+						WrMachSpecificDataRaw.Raw19928								:=		MachineSpecificationConvert.HardItem.UIConfiguration.OperatingMode.CarbideTipSeat.IsActive;
+						(* relief grinding *) // BOOL
+						WrMachSpecificDataRaw.Raw19930								:=		MachineSpecificationConvert.HardItem.UIConfiguration.OperatingMode.ReliefGrinding.IsActive;
+						(* repairing tooth *) // BOOL
+						WrMachSpecificDataRaw.Raw19932								:=		MachineSpecificationConvert.HardItem.UIConfiguration.OperatingMode.RepairingTooth.IsActive;
+						(* tooth construction - saw blade category *) // ARRAY[0..1] OF BOOL
+						WrMachSpecificDataRaw.Raw19934[0]							:=		MachineSpecificationConvert.HardItem.UIConfiguration.ToothConstruction.SawBladeCategory.Conventional;
+						WrMachSpecificDataRaw.Raw19934[1]							:=		MachineSpecificationConvert.HardItem.UIConfiguration.ToothConstruction.SawBladeCategory.HardItem;
+						(* tooth construction - saw blade geometry *) // ARRAY[0..8] OF BOOL
+						WrMachSpecificDataRaw.Raw19936[0]							:=		MachineSpecificationConvert.HardItem.UIConfiguration.ToothConstruction.SawBladeGeometry.Geo101;
+						WrMachSpecificDataRaw.Raw19936[1]							:=		MachineSpecificationConvert.HardItem.UIConfiguration.ToothConstruction.SawBladeGeometry.Geo301;
+						WrMachSpecificDataRaw.Raw19936[2]							:=		MachineSpecificationConvert.HardItem.UIConfiguration.ToothConstruction.SawBladeGeometry.Geo302;
+						WrMachSpecificDataRaw.Raw19936[3]							:=		MachineSpecificationConvert.HardItem.UIConfiguration.ToothConstruction.SawBladeGeometry.Geo303;
+						WrMachSpecificDataRaw.Raw19936[4]							:=		MachineSpecificationConvert.HardItem.UIConfiguration.ToothConstruction.SawBladeGeometry.Geo304;
+						WrMachSpecificDataRaw.Raw19936[5]							:=		MachineSpecificationConvert.HardItem.UIConfiguration.ToothConstruction.SawBladeGeometry.Geo306;
+						WrMachSpecificDataRaw.Raw19936[6]							:=		MachineSpecificationConvert.HardItem.UIConfiguration.ToothConstruction.SawBladeGeometry.Geo307;
+						WrMachSpecificDataRaw.Raw19936[7]							:=		MachineSpecificationConvert.HardItem.UIConfiguration.ToothConstruction.SawBladeGeometry.Geo309;
+						WrMachSpecificDataRaw.Raw19936[8]							:=		MachineSpecificationConvert.HardItem.UIConfiguration.ToothConstruction.SawBladeGeometry.Geo311;
+						(* tooth construction - clearance surface back *) // ARRAY[0..1] OF BOOL
+						WrMachSpecificDataRaw.Raw19938[0]							:=		MachineSpecificationConvert.HardItem.UIConfiguration.ToothConstruction.ClearanceSurfaceBack.BodyLengthDefault;	
+						WrMachSpecificDataRaw.Raw19938[1]							:=		MachineSpecificationConvert.HardItem.UIConfiguration.ToothConstruction.ClearanceSurfaceBack.TotalLengthDefault;
+					(* peripheral basic *)
+						(* axis *)
+						(* axis - v axis *)
+						// WrMachSpecificDataRaw.Raw19954		:	BOOL;
+						// WrMachSpecificDataRaw.Raw19956		:	ARRAY[0..1] OF INT;
+						// WrMachSpecificDataRaw.Raw19958 		:	ARRAY[0..11] OF LREAL;
+						// WrMachSpecificDataRaw.Raw19960 		:	ARRAY[0..1] OF REAL;
+						// WrMachSpecificDataRaw.Raw19962		:	ARRAY[0..4,0..1] OF REAL;
+						WrMachSpecificDataRaw.Raw19940								:=		MachineSpecificationConvert.HardItem.PeripheralBasic.Axis.V.IsActive;
+						WrMachSpecificDataRaw.Raw19942[0]							:=		MachineSpecificationConvert.HardItem.PeripheralBasic.Axis.V.Model;
+						WrMachSpecificDataRaw.Raw19942[1]							:=		MachineSpecificationConvert.HardItem.PeripheralBasic.Axis.V.Vendor;
+						WrMachSpecificDataRaw.Raw19944[0]							:=		MachineSpecificationConvert.HardItem.PeripheralBasic.Axis.V.EncoderResolution;
+						WrMachSpecificDataRaw.Raw19944[1]							:=		MachineSpecificationConvert.HardItem.PeripheralBasic.Axis.V.GearRatio;
+						WrMachSpecificDataRaw.Raw19944[2]							:=		MachineSpecificationConvert.HardItem.PeripheralBasic.Axis.V.GearBacklash;
+						WrMachSpecificDataRaw.Raw19944[3]							:=		MachineSpecificationConvert.HardItem.PeripheralBasic.Axis.V.Velocity.JogFast;
+						WrMachSpecificDataRaw.Raw19944[4]							:=		MachineSpecificationConvert.HardItem.PeripheralBasic.Axis.V.Velocity.JogSlow;
+						WrMachSpecificDataRaw.Raw19944[5]							:=		MachineSpecificationConvert.HardItem.PeripheralBasic.Axis.V.Velocity.HomingFast;
+						WrMachSpecificDataRaw.Raw19944[6]							:=		MachineSpecificationConvert.HardItem.PeripheralBasic.Axis.V.Velocity.HomingSlow;
+						WrMachSpecificDataRaw.Raw19944[7]							:=		MachineSpecificationConvert.HardItem.PeripheralBasic.Axis.V.Velocity.MoveAbsFast;
+						WrMachSpecificDataRaw.Raw19944[8]							:=		MachineSpecificationConvert.HardItem.PeripheralBasic.Axis.V.Velocity.MoveAbsSlow;
+						WrMachSpecificDataRaw.Raw19944[9]							:=		MachineSpecificationConvert.HardItem.PeripheralBasic.Axis.V.Velocity.MoveAbsTPFast;
+						WrMachSpecificDataRaw.Raw19944[10]							:=		MachineSpecificationConvert.HardItem.PeripheralBasic.Axis.V.Velocity.MoveAbsTPSlow;
+						WrMachSpecificDataRaw.Raw19944[11]							:=		MachineSpecificationConvert.HardItem.PeripheralBasic.Axis.V.Position.HomingOffset;
+						(*---------------------------------------------------*)
+						WrMachSpecificDataRaw.Raw19948[0,0]							:=		MachineSpecificationConvert.HardItem.PeripheralBasic.Axis.V.Velocity.TouchingHSS.Fast;
+						WrMachSpecificDataRaw.Raw19948[0,1]							:=		MachineSpecificationConvert.HardItem.PeripheralBasic.Axis.V.Velocity.TouchingHSS.Slow;
+						WrMachSpecificDataRaw.Raw19948[1,0]							:=		MachineSpecificationConvert.HardItem.PeripheralBasic.Axis.V.Velocity.TouchingCarbide.Fast;
+						WrMachSpecificDataRaw.Raw19948[1,1]							:=		MachineSpecificationConvert.HardItem.PeripheralBasic.Axis.V.Velocity.TouchingCarbide.Slow	;
+						WrMachSpecificDataRaw.Raw19948[2,0]							:=		MachineSpecificationConvert.HardItem.PeripheralBasic.Axis.V.Velocity.TouchingCermet.Fast	;
+						WrMachSpecificDataRaw.Raw19948[2,1]							:=		MachineSpecificationConvert.HardItem.PeripheralBasic.Axis.V.Velocity.TouchingCermet.Slow	;
+						WrMachSpecificDataRaw.Raw19948[3,0]							:=		MachineSpecificationConvert.HardItem.PeripheralBasic.Axis.V.Velocity.MeasuringToothPitchGW.Fast	;
+						WrMachSpecificDataRaw.Raw19948[3,1]							:=		MachineSpecificationConvert.HardItem.PeripheralBasic.Axis.V.Velocity.MeasuringToothPitchGW.Slow;
+						WrMachSpecificDataRaw.Raw19948[4,0]							:=		MachineSpecificationConvert.HardItem.PeripheralBasic.Axis.V.Velocity.MeasuringToothPitchLB.Fast;
+						WrMachSpecificDataRaw.Raw19948[4,1]							:=		MachineSpecificationConvert.HardItem.PeripheralBasic.Axis.V.Velocity.MeasuringToothPitchLB.Slow;
+						(*--------------------------------------------------*)
+						WrMachSpecificDataRaw.Raw19946[0]							:=		LREAL_TO_REAL(MachineSpecificationConvert.HardItem.PeripheralBasic.Axis.V.Calibration.SBDiameterIncrements);
+						WrMachSpecificDataRaw.Raw19946[1]							:=		LREAL_TO_REAL(MachineSpecificationConvert.HardItem.PeripheralBasic.Axis.V.Calibration.SBDiameterMM);				
+						(* axis - w axis *)
+						// WrMachSpecificDataRaw.Raw19964		:	BOOL;
+						// WrMachSpecificDataRaw.Raw19966		:	ARRAY[0..1] OF INT;
+						// WrMachSpecificDataRaw.Raw19968 		:	ARRAY[0..11] OF REAL;
+						// WrMachSpecificDataRaw.Raw19970 		:	ARRAY[0..1] OF REAL;
+						// WrMachSpecificDataRaw.Raw19972		:	ARRAY[0..4,0..1] OF REAL;
+						WrMachSpecificDataRaw.Raw19950								:=		MachineSpecificationConvert.HardItem.PeripheralBasic.Axis.W.IsActive;
+						WrMachSpecificDataRaw.Raw19952[0]							:=		MachineSpecificationConvert.HardItem.PeripheralBasic.Axis.W.Model;
+						WrMachSpecificDataRaw.Raw19952[1]							:=		MachineSpecificationConvert.HardItem.PeripheralBasic.Axis.W.Vendor;
+						WrMachSpecificDataRaw.Raw19954[0]							:=		MachineSpecificationConvert.HardItem.PeripheralBasic.Axis.W.EncoderResolution;
+						WrMachSpecificDataRaw.Raw19954[1]							:=		MachineSpecificationConvert.HardItem.PeripheralBasic.Axis.W.GearRatio;
+						WrMachSpecificDataRaw.Raw19954[2]							:=		MachineSpecificationConvert.HardItem.PeripheralBasic.Axis.W.GearBacklash;
+						WrMachSpecificDataRaw.Raw19954[3]							:=		MachineSpecificationConvert.HardItem.PeripheralBasic.Axis.W.Velocity.JogFast;
+						WrMachSpecificDataRaw.Raw19954[4]							:=		MachineSpecificationConvert.HardItem.PeripheralBasic.Axis.W.Velocity.JogSlow;
+						WrMachSpecificDataRaw.Raw19954[5]							:=		MachineSpecificationConvert.HardItem.PeripheralBasic.Axis.W.Velocity.HomingFast;
+						WrMachSpecificDataRaw.Raw19954[6]							:=		MachineSpecificationConvert.HardItem.PeripheralBasic.Axis.W.Velocity.HomingSlow;
+						WrMachSpecificDataRaw.Raw19954[7]							:=		MachineSpecificationConvert.HardItem.PeripheralBasic.Axis.W.Velocity.MoveAbsFast;
+						WrMachSpecificDataRaw.Raw19954[8]							:=		MachineSpecificationConvert.HardItem.PeripheralBasic.Axis.W.Velocity.MoveAbsSlow;
+						WrMachSpecificDataRaw.Raw19954[9]							:=		MachineSpecificationConvert.HardItem.PeripheralBasic.Axis.W.Velocity.MoveAbsTPFast;
+						WrMachSpecificDataRaw.Raw19954[10]							:=		MachineSpecificationConvert.HardItem.PeripheralBasic.Axis.W.Velocity.MoveAbsTPSlow;
+						WrMachSpecificDataRaw.Raw19954[11]							:=		MachineSpecificationConvert.HardItem.PeripheralBasic.Axis.W.Position.HomingOffset;
+						(*---------------------------------------------------*)
+						WrMachSpecificDataRaw.Raw19958[0,0]							:=		MachineSpecificationConvert.HardItem.PeripheralBasic.Axis.W.Velocity.TouchingHSS.Fast;
+						WrMachSpecificDataRaw.Raw19958[0,1]							:=		MachineSpecificationConvert.HardItem.PeripheralBasic.Axis.W.Velocity.TouchingHSS.Slow;
+						WrMachSpecificDataRaw.Raw19958[1,0]							:=		MachineSpecificationConvert.HardItem.PeripheralBasic.Axis.W.Velocity.TouchingCarbide.Fast;
+						WrMachSpecificDataRaw.Raw19958[1,1]							:=		MachineSpecificationConvert.HardItem.PeripheralBasic.Axis.w.Velocity.TouchingCarbide.Slow	;
+						WrMachSpecificDataRaw.Raw19958[2,0]							:=		MachineSpecificationConvert.HardItem.PeripheralBasic.Axis.W.Velocity.TouchingCermet.Fast	;
+						WrMachSpecificDataRaw.Raw19958[2,1]							:=		MachineSpecificationConvert.HardItem.PeripheralBasic.Axis.W.Velocity.TouchingCermet.Slow	;
+						WrMachSpecificDataRaw.Raw19958[3,0]							:=		MachineSpecificationConvert.HardItem.PeripheralBasic.Axis.W.Velocity.MeasuringToothPitchGW.Fast	;
+						WrMachSpecificDataRaw.Raw19958[3,1]							:=		MachineSpecificationConvert.HardItem.PeripheralBasic.Axis.W.Velocity.MeasuringToothPitchGW.Slow;
+						WrMachSpecificDataRaw.Raw19958[4,0]							:=		MachineSpecificationConvert.HardItem.PeripheralBasic.Axis.W.Velocity.MeasuringToothPitchLB.Fast;
+						WrMachSpecificDataRaw.Raw19958[4,1]							:=		MachineSpecificationConvert.HardItem.PeripheralBasic.Axis.W.Velocity.MeasuringToothPitchLB.Slow;
+						(*--------------------------------------------------*)
+						WrMachSpecificDataRaw.Raw19956[0]							:=		LREAL_TO_REAL(MachineSpecificationConvert.HardItem.PeripheralBasic.Axis.W.Calibration.SBDiameterIncrements);
+						WrMachSpecificDataRaw.Raw19956[1]							:=		LREAL_TO_REAL(MachineSpecificationConvert.HardItem.PeripheralBasic.Axis.W.Calibration.SBDiameterMM);
+						(* lubrication - circuit 1 *) // BOOL &amp; INT &amp; ARRAY[0..1] OF UINT &amp; REAL
+						WrMachSpecificDataRaw.Raw19960								:=	MachineSpecificationConvert.HardItem.PeripheralBasic.Lubrication.Circuit1.IsActive;
+						WrMachSpecificDataRaw.Raw19962								:=	MachineSpecificationConvert.HardItem.PeripheralBasic.Lubrication.Circuit1.Model; 
+						WrMachSpecificDataRaw.Raw19964[0]							:=	MachineSpecificationConvert.HardItem.PeripheralBasic.Lubrication.Circuit1.Counter;
+						WrMachSpecificDataRaw.Raw19964[1]							:=	MachineSpecificationConvert.HardItem.PeripheralBasic.Lubrication.Circuit1.Pulse; 
+						WrMachSpecificDataRaw.Raw19966 								:=	MachineSpecificationConvert.HardItem.PeripheralBasic.Lubrication.Circuit1.LubricationPulseDelay; 
+						(* lubrication - circuit 2 *) // BOOL &amp; INT &amp; ARRAY[0..1] OF UINT &amp; REAL
+						WrMachSpecificDataRaw.Raw19968								:=	MachineSpecificationConvert.HardItem.PeripheralBasic.Lubrication.Circuit1.IsActive;
+						WrMachSpecificDataRaw.Raw19970								:=	MachineSpecificationConvert.HardItem.PeripheralBasic.Lubrication.Circuit1.Model; 
+						WrMachSpecificDataRaw.Raw19972[0]							:=	MachineSpecificationConvert.HardItem.PeripheralBasic.Lubrication.Circuit1.Counter;
+						WrMachSpecificDataRaw.Raw19972[1]							:=	MachineSpecificationConvert.HardItem.PeripheralBasic.Lubrication.Circuit1.Pulse; 
+						WrMachSpecificDataRaw.Raw19974 								:=	MachineSpecificationConvert.HardItem.PeripheralBasic.Lubrication.Circuit1.LubricationPulseDelay; 
+						(* grinding wheel *)
+						(* grinding wheel - lead angle default *) // REAL
+						WrMachSpecificDataRaw.Raw19976								:=	MachineSpecificationConvert.HardItem.PeripheralBasic.GrindingWheel.LeadAngleDefault; 
+						(* grinding wheel - cermet *) // BOOL &amp; ARRAY[0..1] OF INT &amp; ARRAY[0..2] OF REAL
+						WrMachSpecificDataRaw.Raw19978								:=	MachineSpecificationConvert.HardItem.PeripheralBasic.GrindingWheel.Cermet.IsActive;
+						WrMachSpecificDataRaw.Raw19980[0]							:=	MachineSpecificationConvert.HardItem.PeripheralBasic.GrindingWheel.Cermet.RotatingDirection.AvailableDirection;
+						WrMachSpecificDataRaw.Raw19980[1]							:=	MachineSpecificationConvert.HardItem.PeripheralBasic.GrindingWheel.Cermet.RotatingDirection.DefaultDirection;
+						WrMachSpecificDataRaw.Raw19982[0]							:=	MachineSpecificationConvert.HardItem.PeripheralBasic.GrindingWheel.Cermet.Velocity.Default;
+						WrMachSpecificDataRaw.Raw19982[1] 							:=	MachineSpecificationConvert.HardItem.PeripheralBasic.GrindingWheel.Cermet.Velocity.Maximal;
+						WrMachSpecificDataRaw.Raw19982[2] 							:=	MachineSpecificationConvert.HardItem.PeripheralBasic.GrindingWheel.Cermet.Velocity.Minimal;
+						(* grinding wheel - carbide *) // BOOL &amp; ARRAY[0..1] OF INT &amp; ARRAY[0..2] OF REAL
+						WrMachSpecificDataRaw.Raw19984								:=	MachineSpecificationConvert.HardItem.PeripheralBasic.GrindingWheel.Carbide.IsActive;
+						WrMachSpecificDataRaw.Raw19986[0]							:=	MachineSpecificationConvert.HardItem.PeripheralBasic.GrindingWheel.Carbide.RotatingDirection.AvailableDirection;
+						WrMachSpecificDataRaw.Raw19986[1]							:=	MachineSpecificationConvert.HardItem.PeripheralBasic.GrindingWheel.Carbide.RotatingDirection.DefaultDirection;
+						WrMachSpecificDataRaw.Raw19988[0]							:=	MachineSpecificationConvert.HardItem.PeripheralBasic.GrindingWheel.Carbide.Velocity.Default;
+						WrMachSpecificDataRaw.Raw19988[1] 							:=	MachineSpecificationConvert.HardItem.PeripheralBasic.GrindingWheel.Carbide.Velocity.Maximal;
+						WrMachSpecificDataRaw.Raw19988[2] 							:=	MachineSpecificationConvert.HardItem.PeripheralBasic.GrindingWheel.Carbide.Velocity.Minimal;
+						(* grinding wheel - steel *)
+						WrMachSpecificDataRaw.Raw19990								:=	MachineSpecificationConvert.HardItem.PeripheralBasic.GrindingWheel.Steel.IsActive;
+						WrMachSpecificDataRaw.Raw19992[0]							:=	MachineSpecificationConvert.HardItem.PeripheralBasic.GrindingWheel.Steel.RotatingDirection.AvailableDirection;
+						WrMachSpecificDataRaw.Raw19992[1]							:=	MachineSpecificationConvert.HardItem.PeripheralBasic.GrindingWheel.Steel.RotatingDirection.DefaultDirection;
+						WrMachSpecificDataRaw.Raw19994[0]							:=	MachineSpecificationConvert.HardItem.PeripheralBasic.GrindingWheel.Steel.Velocity.Default;
+						WrMachSpecificDataRaw.Raw19994[1] 							:=	MachineSpecificationConvert.HardItem.PeripheralBasic.GrindingWheel.Steel.Velocity.Maximal;
+						WrMachSpecificDataRaw.Raw19994[2] 							:=	MachineSpecificationConvert.HardItem.PeripheralBasic.GrindingWheel.Steel.Velocity.Minimal;
+					(* peripheral optional *)
+						(* remote monitoring *)
+						(* remote monitoring - to external *) // ARRAY[0..7] OF INT
+						WrMachSpecificDataRaw.Raw19996[0]							:=	MachineSpecificationConvert.HardItem.PeripheralOptional.RemoteMonitoring.ToExternal.ToExt1.OutputFunction;
+						WrMachSpecificDataRaw.Raw19996[1]							:=	MachineSpecificationConvert.HardItem.PeripheralOptional.RemoteMonitoring.ToExternal.ToExt1.OutputRouting;
+						WrMachSpecificDataRaw.Raw19996[2]							:=	MachineSpecificationConvert.HardItem.PeripheralOptional.RemoteMonitoring.ToExternal.ToExt2.OutputFunction;
+						WrMachSpecificDataRaw.Raw19996[3]							:=	MachineSpecificationConvert.HardItem.PeripheralOptional.RemoteMonitoring.ToExternal.ToExt2.OutputRouting;
+						WrMachSpecificDataRaw.Raw19996[4]							:=	MachineSpecificationConvert.HardItem.PeripheralOptional.RemoteMonitoring.ToExternal.ToExt3.OutputFunction;
+						WrMachSpecificDataRaw.Raw19996[5]							:=	MachineSpecificationConvert.HardItem.PeripheralOptional.RemoteMonitoring.ToExternal.ToExt3.OutputRouting;
+						WrMachSpecificDataRaw.Raw19996[6]							:=	MachineSpecificationConvert.HardItem.PeripheralOptional.RemoteMonitoring.ToExternal.ToExt4.OutputFunction;
+						WrMachSpecificDataRaw.Raw19996[7]							:=	MachineSpecificationConvert.HardItem.PeripheralOptional.RemoteMonitoring.ToExternal.ToExt4.OutputRouting;
+						(* remote monitoring - from external *) // ARRAY[0..7] OF INT
+						WrMachSpecificDataRaw.Raw19998[0]							:=	MachineSpecificationConvert.HardItem.PeripheralOptional.RemoteMonitoring.FromExternal.FromExt1.InputFunction;
+						WrMachSpecificDataRaw.Raw19998[1]							:=	MachineSpecificationConvert.HardItem.PeripheralOptional.RemoteMonitoring.FromExternal.FromExt1.InputRouting;
+						WrMachSpecificDataRaw.Raw19998[2]							:=	MachineSpecificationConvert.HardItem.PeripheralOptional.RemoteMonitoring.FromExternal.FromExt2.InputFunction;
+						WrMachSpecificDataRaw.Raw19998[3]							:=	MachineSpecificationConvert.HardItem.PeripheralOptional.RemoteMonitoring.FromExternal.FromExt2.InputRouting;
+						WrMachSpecificDataRaw.Raw19998[4]							:=	MachineSpecificationConvert.HardItem.PeripheralOptional.RemoteMonitoring.FromExternal.FromExt3.InputFunction;
+						WrMachSpecificDataRaw.Raw19998[5]							:=	MachineSpecificationConvert.HardItem.PeripheralOptional.RemoteMonitoring.FromExternal.FromExt3.InputRouting;
+						WrMachSpecificDataRaw.Raw19998[6]							:=	MachineSpecificationConvert.HardItem.PeripheralOptional.RemoteMonitoring.FromExternal.FromExt4.InputFunction;
+						WrMachSpecificDataRaw.Raw19998[7]							:=	MachineSpecificationConvert.HardItem.PeripheralOptional.RemoteMonitoring.FromExternal.FromExt4.InputRouting;
+						(* io link *) // INT
+						WrMachSpecificDataRaw.Raw20000								:=	MachineSpecificationConvert.HardItem.PeripheralOptional.IOLink.NoOfMaster;
+			
+			
+			Done	:=	TRUE;
+	END_IF;</xhtml>
+          </ST>
+        </body>
+        <addData>
+          <data name="http://www.3s-software.com/plcopenxml/interfaceasplaintext" handleUnknown="implementation">
+            <InterfaceAsPlainText>
+              <xhtml xmlns="http://www.w3.org/1999/xhtml">FUNCTION_BLOCK FB_SUBFUNC_MachSpecificCopyWr
+	VAR_INPUT
+		MachineSpecificationConvert	:	ST_MachSpecification;
+	END_VAR
+	VAR_OUTPUT
+		WrMachSpecificDataRaw		:	ST_MachSpecificRaw;
+	END_VAR
+	VAR_IN_OUT
+		Done						:	BOOL;
+	END_VAR
+</xhtml>
+            </InterfaceAsPlainText>
+          </data>
+          <data name="http://www.3s-software.com/plcopenxml/objectid" handleUnknown="discard">
+            <ObjectId>4c520c8c-5b6d-4713-bb88-9926190c0a87</ObjectId>
+          </data>
+        </addData>
+      </pou>
+    </pous>
+  </types>
+  <instances>
+    <configurations />
+  </instances>
+  <addData>
+    <data name="http://www.3s-software.com/plcopenxml/projectstructure" handleUnknown="discard">
+      <ProjectStructure>
+        <Object Name="FB_SUBFUNC_MachSpecificCopyWr" ObjectId="4c520c8c-5b6d-4713-bb88-9926190c0a87" />
+      </ProjectStructure>
+    </data>
+  </addData>
+</project>

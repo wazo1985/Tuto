@@ -1,0 +1,2222 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<project xmlns="http://www.plcopen.org/xml/tc6_0200">
+  <fileHeader companyName="Beckhoff Automation GmbH" productName="TwinCAT PLC Control" productVersion="3.5.13.20" creationDateTime="2020-11-20T11:41:12.3628683" />
+  <contentHeader name="LorochCxPlc_1" modificationDateTime="2020-11-20T11:41:12.3628683">
+    <coordinateInfo>
+      <fbd>
+        <scaling x="1" y="1" />
+      </fbd>
+      <ld>
+        <scaling x="1" y="1" />
+      </ld>
+      <sfc>
+        <scaling x="1" y="1" />
+      </sfc>
+    </coordinateInfo>
+    <addData>
+      <data name="http://www.3s-software.com/plcopenxml/projectinformation" handleUnknown="implementation">
+        <ProjectInformation />
+      </data>
+    </addData>
+  </contentHeader>
+  <types>
+    <dataTypes>
+      <dataType name="ST_MachSpecificRaw">
+        <baseType>
+          <struct>
+            <variable name="Raw100">
+              <type>
+                <LREAL />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> checksum </xhtml>
+              </documentation>
+            </variable>
+            <variable name="Raw1000">
+              <type>
+                <INT />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> base </xhtml>
+              </documentation>
+            </variable>
+            <variable name="Raw1001">
+              <type>
+                <string />
+              </type>
+            </variable>
+            <variable name="Raw1002">
+              <type>
+                <INT />
+              </type>
+            </variable>
+            <variable name="Raw1003">
+              <type>
+                <string />
+              </type>
+            </variable>
+            <variable name="Raw1004">
+              <type>
+                <array>
+                  <dimension lower="0" upper="3" />
+                  <baseType>
+                    <REAL />
+                  </baseType>
+                </array>
+              </type>
+            </variable>
+            <variable name="Raw2010">
+              <type>
+                <array>
+                  <dimension lower="0" upper="7" />
+                  <baseType>
+                    <BOOL />
+                  </baseType>
+                </array>
+              </type>
+            </variable>
+            <variable name="Raw2020">
+              <type>
+                <array>
+                  <dimension lower="0" upper="1" />
+                  <baseType>
+                    <BOOL />
+                  </baseType>
+                </array>
+              </type>
+            </variable>
+            <variable name="Raw2021">
+              <type>
+                <BOOL />
+              </type>
+            </variable>
+            <variable name="Raw2022">
+              <type>
+                <array>
+                  <dimension lower="0" upper="5" />
+                  <baseType>
+                    <UINT />
+                  </baseType>
+                </array>
+              </type>
+            </variable>
+            <variable name="Raw2023">
+              <type>
+                <array>
+                  <dimension lower="0" upper="2" />
+                  <baseType>
+                    <BOOL />
+                  </baseType>
+                </array>
+              </type>
+            </variable>
+            <variable name="Raw2024">
+              <type>
+                <array>
+                  <dimension lower="0" upper="2" />
+                  <baseType>
+                    <REAL />
+                  </baseType>
+                </array>
+              </type>
+            </variable>
+            <variable name="Raw2025">
+              <type>
+                <array>
+                  <dimension lower="0" upper="1" />
+                  <baseType>
+                    <BOOL />
+                  </baseType>
+                </array>
+              </type>
+            </variable>
+            <variable name="Raw2030">
+              <type>
+                <array>
+                  <dimension lower="0" upper="2" />
+                  <baseType>
+                    <BOOL />
+                  </baseType>
+                </array>
+              </type>
+            </variable>
+            <variable name="Raw2040">
+              <type>
+                <array>
+                  <dimension lower="0" upper="7" />
+                  <baseType>
+                    <BOOL />
+                  </baseType>
+                </array>
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> UI visu </xhtml>
+              </documentation>
+            </variable>
+            <variable name="Raw2050">
+              <type>
+                <INT />
+              </type>
+            </variable>
+            <variable name="Raw3000">
+              <type>
+                <BOOL />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> ui config 
+ peripheral basic 
+ axis 
+ x axis </xhtml>
+              </documentation>
+            </variable>
+            <variable name="Raw3001">
+              <type>
+                <array>
+                  <dimension lower="0" upper="1" />
+                  <baseType>
+                    <INT />
+                  </baseType>
+                </array>
+              </type>
+            </variable>
+            <variable name="Raw3002">
+              <type>
+                <array>
+                  <dimension lower="0" upper="11" />
+                  <baseType>
+                    <REAL />
+                  </baseType>
+                </array>
+              </type>
+            </variable>
+            <variable name="Raw3003">
+              <type>
+                <array>
+                  <dimension lower="0" upper="1" />
+                  <baseType>
+                    <LREAL />
+                  </baseType>
+                </array>
+              </type>
+            </variable>
+            <variable name="Raw3100">
+              <type>
+                <BOOL />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> y axis </xhtml>
+              </documentation>
+            </variable>
+            <variable name="Raw3101">
+              <type>
+                <array>
+                  <dimension lower="0" upper="1" />
+                  <baseType>
+                    <INT />
+                  </baseType>
+                </array>
+              </type>
+            </variable>
+            <variable name="Raw3102">
+              <type>
+                <array>
+                  <dimension lower="0" upper="11" />
+                  <baseType>
+                    <REAL />
+                  </baseType>
+                </array>
+              </type>
+            </variable>
+            <variable name="Raw3103">
+              <type>
+                <array>
+                  <dimension lower="0" upper="3" />
+                  <baseType>
+                    <REAL />
+                  </baseType>
+                </array>
+              </type>
+            </variable>
+            <variable name="Raw3200">
+              <type>
+                <BOOL />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> z axis </xhtml>
+              </documentation>
+            </variable>
+            <variable name="Raw3201">
+              <type>
+                <array>
+                  <dimension lower="0" upper="1" />
+                  <baseType>
+                    <INT />
+                  </baseType>
+                </array>
+              </type>
+            </variable>
+            <variable name="Raw3202">
+              <type>
+                <array>
+                  <dimension lower="0" upper="11" />
+                  <baseType>
+                    <REAL />
+                  </baseType>
+                </array>
+              </type>
+            </variable>
+            <variable name="Raw3203">
+              <type>
+                <array>
+                  <dimension lower="0" upper="3" />
+                  <baseType>
+                    <REAL />
+                  </baseType>
+                </array>
+              </type>
+            </variable>
+            <variable name="Raw3300">
+              <type>
+                <array>
+                  <dimension lower="0" upper="1" />
+                  <baseType>
+                    <REAL />
+                  </baseType>
+                </array>
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> axis position </xhtml>
+              </documentation>
+            </variable>
+            <variable name="Raw4000">
+              <type>
+                <BOOL />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> coolant/filter 
+ chiller </xhtml>
+              </documentation>
+            </variable>
+            <variable name="Raw4001">
+              <type>
+                <REAL />
+              </type>
+            </variable>
+            <variable name="Raw4002">
+              <type>
+                <BOOL />
+              </type>
+            </variable>
+            <variable name="Raw4100">
+              <type>
+                <BOOL />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> filter </xhtml>
+              </documentation>
+            </variable>
+            <variable name="Raw4101">
+              <type>
+                <REAL />
+              </type>
+            </variable>
+            <variable name="Raw4102">
+              <type>
+                <BOOL />
+              </type>
+            </variable>
+            <variable name="Raw4200">
+              <type>
+                <BOOL />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> return feed pump </xhtml>
+              </documentation>
+            </variable>
+            <variable name="Raw4201">
+              <type>
+                <REAL />
+              </type>
+            </variable>
+            <variable name="Raw4202">
+              <type>
+                <BOOL />
+              </type>
+            </variable>
+            <variable name="Raw4300">
+              <type>
+                <BOOL />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> coolant pump </xhtml>
+              </documentation>
+            </variable>
+            <variable name="Raw4301">
+              <type>
+                <REAL />
+              </type>
+            </variable>
+            <variable name="Raw4302">
+              <type>
+                <BOOL />
+              </type>
+            </variable>
+            <variable name="Raw4400">
+              <type>
+                <array>
+                  <dimension lower="0" upper="2" />
+                  <baseType>
+                    <UINT />
+                  </baseType>
+                </array>
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> cartridge counter </xhtml>
+              </documentation>
+            </variable>
+            <variable name="Raw5000">
+              <type>
+                <BOOL />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> Extraction </xhtml>
+              </documentation>
+            </variable>
+            <variable name="Raw5001">
+              <type>
+                <REAL />
+              </type>
+            </variable>
+            <variable name="Raw6000">
+              <type>
+                <INT />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> grinding head </xhtml>
+              </documentation>
+            </variable>
+            <variable name="Raw7000">
+              <type>
+                <BOOL />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> grinding wheel 
+ cbn </xhtml>
+              </documentation>
+            </variable>
+            <variable name="Raw7001">
+              <type>
+                <string length="3" />
+              </type>
+            </variable>
+            <variable name="Raw7002">
+              <type>
+                <array>
+                  <dimension lower="0" upper="2" />
+                  <baseType>
+                    <REAL />
+                  </baseType>
+                </array>
+              </type>
+            </variable>
+            <variable name="Raw7100">
+              <type>
+                <BOOL />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> dia - carbide </xhtml>
+              </documentation>
+            </variable>
+            <variable name="Raw7101">
+              <type>
+                <string length="3" />
+              </type>
+            </variable>
+            <variable name="Raw7102">
+              <type>
+                <array>
+                  <dimension lower="0" upper="2" />
+                  <baseType>
+                    <REAL />
+                  </baseType>
+                </array>
+              </type>
+            </variable>
+            <variable name="Raw7200">
+              <type>
+                <BOOL />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> dia - cermet </xhtml>
+              </documentation>
+            </variable>
+            <variable name="Raw7201">
+              <type>
+                <string length="3" />
+              </type>
+            </variable>
+            <variable name="Raw7202">
+              <type>
+                <array>
+                  <dimension lower="0" upper="2" />
+                  <baseType>
+                    <REAL />
+                  </baseType>
+                </array>
+              </type>
+            </variable>
+            <variable name="Raw7300">
+              <type>
+                <BOOL />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> dressing </xhtml>
+              </documentation>
+            </variable>
+            <variable name="Raw7301">
+              <type>
+                <string length="3" />
+              </type>
+            </variable>
+            <variable name="Raw7302">
+              <type>
+                <array>
+                  <dimension lower="0" upper="2" />
+                  <baseType>
+                    <REAL />
+                  </baseType>
+                </array>
+              </type>
+            </variable>
+            <variable name="Raw8000">
+              <type>
+                <array>
+                  <dimension lower="0" upper="1" />
+                  <baseType>
+                    <UINT />
+                  </baseType>
+                </array>
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> lubrication </xhtml>
+              </documentation>
+            </variable>
+            <variable name="Raw9000">
+              <type>
+                <BOOL />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> peripheral basic 
+ peripheral optional 
+ chip breaker </xhtml>
+              </documentation>
+            </variable>
+            <variable name="Raw9001">
+              <type>
+                <INT />
+              </type>
+            </variable>
+            <variable name="Raw9002">
+              <type>
+                <array>
+                  <dimension lower="0" upper="1" />
+                  <baseType>
+                    <UINT />
+                  </baseType>
+                </array>
+              </type>
+            </variable>
+            <variable name="Raw9003">
+              <type>
+                <array>
+                  <dimension lower="0" upper="3" />
+                  <baseType>
+                    <REAL />
+                  </baseType>
+                </array>
+              </type>
+            </variable>
+            <variable name="Raw10000">
+              <type>
+                <array>
+                  <dimension lower="0" upper="1" />
+                  <baseType>
+                    <BOOL />
+                  </baseType>
+                </array>
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> fire extinguisher </xhtml>
+              </documentation>
+            </variable>
+            <variable name="Raw11000">
+              <type>
+                <INT />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> flange handler </xhtml>
+              </documentation>
+            </variable>
+            <variable name="Raw11001">
+              <type>
+                <BOOL />
+              </type>
+            </variable>
+            <variable name="Raw11002">
+              <type>
+                <array>
+                  <dimension lower="0" upper="11" />
+                  <baseType>
+                    <REAL />
+                  </baseType>
+                </array>
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> res - not longer used for flange handler </xhtml>
+              </documentation>
+            </variable>
+            <variable name="Raw12000">
+              <type>
+                <BOOL />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> light barrier </xhtml>
+              </documentation>
+            </variable>
+            <variable name="Raw12001">
+              <type>
+                <UINT />
+              </type>
+            </variable>
+            <variable name="Raw12002">
+              <type>
+                <BOOL />
+              </type>
+            </variable>
+            <variable name="Raw12003">
+              <type>
+                <array>
+                  <dimension lower="0" upper="1" />
+                  <baseType>
+                    <REAL />
+                  </baseType>
+                </array>
+              </type>
+            </variable>
+            <variable name="Raw13000">
+              <type>
+                <array>
+                  <dimension lower="0" upper="3" />
+                  <baseType>
+                    <BOOL />
+                  </baseType>
+                </array>
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> positioning sensor </xhtml>
+              </documentation>
+            </variable>
+            <variable name="Raw14000">
+              <type>
+                <BOOL />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> loader</xhtml>
+              </documentation>
+            </variable>
+            <variable name="Raw14001">
+              <type>
+                <array>
+                  <dimension lower="0" upper="1" />
+                  <baseType>
+                    <REAL />
+                  </baseType>
+                </array>
+              </type>
+            </variable>
+            <variable name="Raw14002">
+              <type>
+                <UINT />
+              </type>
+            </variable>
+            <variable name="Raw15000">
+              <type>
+                <array>
+                  <dimension lower="0" upper="1" />
+                  <baseType>
+                    <BOOL />
+                  </baseType>
+                </array>
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> saw blade clamping </xhtml>
+              </documentation>
+            </variable>
+            <variable name="Raw16000">
+              <type>
+                <BOOL />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> saw blade handler </xhtml>
+              </documentation>
+            </variable>
+            <variable name="Raw16001">
+              <type>
+                <INT />
+              </type>
+            </variable>
+            <variable name="Raw16002">
+              <type>
+                <array>
+                  <dimension lower="0" upper="4" />
+                  <baseType>
+                    <DINT />
+                  </baseType>
+                </array>
+              </type>
+            </variable>
+            <variable name="Raw17000">
+              <type>
+                <BOOL />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> support bracket </xhtml>
+              </documentation>
+            </variable>
+            <variable name="Raw17001">
+              <type>
+                <INT />
+              </type>
+            </variable>
+            <variable name="Raw17002">
+              <type>
+                <array>
+                  <dimension lower="0" upper="2" />
+                  <baseType>
+                    <BOOL />
+                  </baseType>
+                </array>
+              </type>
+            </variable>
+            <variable name="Raw18000">
+              <type>
+                <INT />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> peripheral optional 
+ peripheral basic 
+ safety controller </xhtml>
+              </documentation>
+            </variable>
+            <variable name="Raw19000">
+              <type>
+                <array>
+                  <dimension lower="0" upper="7" />
+                  <baseType>
+                    <BOOL />
+                  </baseType>
+                </array>
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> peripheral basic 
+ new opmode </xhtml>
+              </documentation>
+            </variable>
+            <variable name="Raw19001">
+              <type>
+                <array>
+                  <dimension lower="0" upper="7" />
+                  <baseType>
+                    <BOOL />
+                  </baseType>
+                </array>
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> new toothshape </xhtml>
+              </documentation>
+            </variable>
+            <variable name="Raw19200">
+              <type>
+                <array>
+                  <dimension lower="0" upper="1" />
+                  <baseType>
+                    <REAL />
+                  </baseType>
+                </array>
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> new chipbreaker </xhtml>
+              </documentation>
+            </variable>
+            <variable name="Raw19201">
+              <type>
+                <array>
+                  <dimension lower="0" upper="1" />
+                  <baseType>
+                    <REAL />
+                  </baseType>
+                </array>
+              </type>
+            </variable>
+            <variable name="Raw19300">
+              <type>
+                <INT />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> touch man handwheel mode </xhtml>
+              </documentation>
+            </variable>
+            <variable name="Raw19310">
+              <type>
+                <array>
+                  <dimension lower="0" upper="3" />
+                  <baseType>
+                    <BOOL />
+                  </baseType>
+                </array>
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> new StoringOptions </xhtml>
+              </documentation>
+            </variable>
+            <variable name="Raw19320">
+              <type>
+                <array>
+                  <dimension lower="0" upper="1" />
+                  <baseType>
+                    <INT />
+                  </baseType>
+                </array>
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> new ProcessingOptions </xhtml>
+              </documentation>
+            </variable>
+            <variable name="Raw19330">
+              <type>
+                <INT />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> new FRed </xhtml>
+              </documentation>
+            </variable>
+            <variable name="Raw19331">
+              <type>
+                <INT />
+              </type>
+            </variable>
+            <variable name="Raw19340">
+              <type>
+                <REAL />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> support bracket message delay </xhtml>
+              </documentation>
+            </variable>
+            <variable name="Raw19400">
+              <type>
+                <array>
+                  <dimension lower="0" upper="1" />
+                  <baseType>
+                    <INT />
+                  </baseType>
+                </array>
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> loader </xhtml>
+              </documentation>
+            </variable>
+            <variable name="Raw19410">
+              <type>
+                <array>
+                  <dimension lower="0" upper="5" />
+                  <baseType>
+                    <REAL />
+                  </baseType>
+                </array>
+              </type>
+            </variable>
+            <variable name="Raw19420">
+              <type>
+                <BOOL />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> hydraulics </xhtml>
+              </documentation>
+            </variable>
+            <variable name="Raw19430">
+              <type>
+                <BOOL />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> voltage monitoring </xhtml>
+              </documentation>
+            </variable>
+            <variable name="Raw19440">
+              <type>
+                <BOOL />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> lubrication circuit 2 </xhtml>
+              </documentation>
+            </variable>
+            <variable name="Raw19441">
+              <type>
+                <array>
+                  <dimension lower="0" upper="1" />
+                  <baseType>
+                    <UINT />
+                  </baseType>
+                </array>
+              </type>
+            </variable>
+            <variable name="Raw19450">
+              <type>
+                <UINT />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> ethercat </xhtml>
+              </documentation>
+            </variable>
+            <variable name="Raw19460">
+              <type>
+                <REAL />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> homing pos </xhtml>
+              </documentation>
+            </variable>
+            <variable name="Raw19500">
+              <type>
+                <UINT />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> ArborNumber </xhtml>
+              </documentation>
+            </variable>
+            <variable name="Raw19510">
+              <type>
+                <UINT />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> ArborNumberSource	</xhtml>
+              </documentation>
+            </variable>
+            <variable name="Raw19550">
+              <type>
+                <UINT />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> New CachedStacks </xhtml>
+              </documentation>
+            </variable>
+            <variable name="Raw19600">
+              <type>
+                <UINT />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> Neu </xhtml>
+              </documentation>
+            </variable>
+            <variable name="Raw19650">
+              <type>
+                <array>
+                  <dimension lower="0" upper="1" />
+                  <baseType>
+                    <BOOL />
+                  </baseType>
+                </array>
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> Infeed Correction chamfering </xhtml>
+              </documentation>
+            </variable>
+            <variable name="Raw19651">
+              <type>
+                <array>
+                  <dimension lower="0" upper="5" />
+                  <baseType>
+                    <REAL />
+                  </baseType>
+                </array>
+              </type>
+            </variable>
+            <variable name="Raw19655">
+              <type>
+                <array>
+                  <dimension lower="0" upper="4" />
+                  <baseType>
+                    <BOOL />
+                  </baseType>
+                </array>
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> axis options </xhtml>
+              </documentation>
+            </variable>
+            <variable name="Raw19700">
+              <type>
+                <BOOL />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> UI visu </xhtml>
+              </documentation>
+            </variable>
+            <variable name="Raw19710">
+              <type>
+                <REAL />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> LightBarrier PositionOffset </xhtml>
+              </documentation>
+            </variable>
+            <variable name="Raw19800">
+              <type>
+                <BOOL />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> positioning sensor</xhtml>
+              </documentation>
+            </variable>
+            <variable name="Raw19801">
+              <type>
+                <INT />
+              </type>
+            </variable>
+            <variable name="Raw19810">
+              <type>
+                <BOOL />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> SawBladeMeasureAuto </xhtml>
+              </documentation>
+            </variable>
+            <variable name="Raw19811">
+              <type>
+                <BOOL />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> OperatingModeTouchOption </xhtml>
+              </documentation>
+            </variable>
+            <variable name="Raw19814">
+              <type>
+                <INT />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> CoolantSystem </xhtml>
+              </documentation>
+            </variable>
+            <variable name="Raw19815">
+              <type>
+                <REAL />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> FeedRateCorrection </xhtml>
+              </documentation>
+            </variable>
+            <variable name="Raw19820">
+              <type>
+                <BOOL />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> grinding head no swivel at process end </xhtml>
+              </documentation>
+            </variable>
+            <variable name="Raw19825">
+              <type>
+                <array>
+                  <dimension lower="0" upper="2" />
+                  <baseType>
+                    <BOOL />
+                  </baseType>
+                </array>
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> remote monitoring </xhtml>
+              </documentation>
+            </variable>
+            <variable name="Raw19830">
+              <type>
+                <array>
+                  <dimension lower="0" upper="1" />
+                  <baseType>
+                    <REAL />
+                  </baseType>
+                </array>
+              </type>
+            </variable>
+            <variable name="Raw19831">
+              <type>
+                <REAL />
+              </type>
+            </variable>
+            <variable name="Raw19833">
+              <type>
+                <INT />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> Safety Circuit Option : With/Without Enabling Switches </xhtml>
+              </documentation>
+            </variable>
+            <variable name="Raw19835">
+              <type>
+                <INT />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> Stepper , Pneumatic </xhtml>
+              </documentation>
+            </variable>
+            <variable name="Raw19839">
+              <type>
+                <REAL />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> Reference position of the stepper Motor </xhtml>
+              </documentation>
+            </variable>
+            <variable name="Raw19840">
+              <type>
+                <array>
+                  <dimension lower="0" upper="3" />
+                  <baseType>
+                    <REAL />
+                  </baseType>
+                </array>
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> New for ChipBreaker GW Width and Diameter </xhtml>
+              </documentation>
+            </variable>
+            <variable name="Raw19842">
+              <type>
+                <INT />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> info -&gt; Raw11002 = res 
+ grinding wheel model </xhtml>
+              </documentation>
+            </variable>
+            <variable name="Raw19843">
+              <type>
+                <BOOL />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> limit switch z axis </xhtml>
+              </documentation>
+            </variable>
+            <variable name="Raw19844">
+              <type>
+                <array>
+                  <dimension lower="0" upper="1" />
+                  <baseType>
+                    <BOOL />
+                  </baseType>
+                </array>
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> lubrication </xhtml>
+              </documentation>
+            </variable>
+            <variable name="Raw19845">
+              <type>
+                <BOOL />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> pneumatics </xhtml>
+              </documentation>
+            </variable>
+            <variable name="Raw19846">
+              <type>
+                <BOOL />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> temperature monitoring </xhtml>
+              </documentation>
+            </variable>
+            <variable name="Raw19847">
+              <type>
+                <array>
+                  <dimension lower="0" upper="4" />
+                  <baseType>
+                    <BOOL />
+                  </baseType>
+                </array>
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> limit switch normally open / pressure switch - coolant ystem </xhtml>
+              </documentation>
+            </variable>
+            <variable name="Raw19848">
+              <type>
+                <BOOL />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> limit switch normally open - extraction </xhtml>
+              </documentation>
+            </variable>
+            <variable name="Raw19850">
+              <type>
+                <INT />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> Chip Breaker Edge Distance </xhtml>
+              </documentation>
+            </variable>
+            <variable name="Raw19851">
+              <type>
+                <REAL />
+              </type>
+            </variable>
+            <variable name="Raw19852">
+              <type>
+                <BOOL />
+              </type>
+            </variable>
+            <variable name="Raw19853">
+              <type>
+                <REAL />
+              </type>
+            </variable>
+            <variable name="Raw19854">
+              <type>
+                <BOOL />
+              </type>
+            </variable>
+            <variable name="Raw19856">
+              <type>
+                <BOOL />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> Remote monitoring fire extinguisher ext warning </xhtml>
+              </documentation>
+            </variable>
+            <variable name="Raw19860">
+              <type>
+                <INT />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> Grinding Wheel Cover </xhtml>
+              </documentation>
+            </variable>
+            <variable name="Raw19865">
+              <type>
+                <array>
+                  <dimension lower="0" upper="1" />
+                  <baseType>
+                    <UINT />
+                  </baseType>
+                </array>
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> Chamfer No of Touch </xhtml>
+              </documentation>
+            </variable>
+            <variable name="Raw19866">
+              <type>
+                <array>
+                  <dimension lower="0" upper="1" />
+                  <baseType>
+                    <BOOL />
+                  </baseType>
+                </array>
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> chamfer touch pos </xhtml>
+              </documentation>
+            </variable>
+            <variable name="Raw19868">
+              <type>
+                <array>
+                  <dimension lower="0" upper="1" />
+                  <baseType>
+                    <BOOL />
+                  </baseType>
+                </array>
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> History File 
+ writing Conditions </xhtml>
+              </documentation>
+            </variable>
+            <variable name="Raw19869">
+              <type>
+                <UINT />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> History File Buffering </xhtml>
+              </documentation>
+            </variable>
+            <variable name="Raw19870">
+              <type>
+                <BOOL />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> Extraction Running Monitoring </xhtml>
+              </documentation>
+            </variable>
+            <variable name="Raw19880">
+              <type>
+                <array>
+                  <dimension lower="0" upper="5" />
+                  <baseType>
+                    <BOOL />
+                  </baseType>
+                </array>
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> FRed Chamfering InFeed </xhtml>
+              </documentation>
+            </variable>
+            <variable name="Raw19881">
+              <type>
+                <array>
+                  <dimension lower="0" upper="5" />
+                  <baseType>
+                    <REAL />
+                  </baseType>
+                </array>
+              </type>
+            </variable>
+            <variable name="Raw19885">
+              <type>
+                <BOOL />
+              </type>
+            </variable>
+            <variable name="Raw19886">
+              <type>
+                <LREAL />
+              </type>
+            </variable>
+            <variable name="Raw19887">
+              <type>
+                <BOOL />
+              </type>
+            </variable>
+            <variable name="Raw19888">
+              <type>
+                <UINT />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml">  FRed ExpandedOrders </xhtml>
+              </documentation>
+            </variable>
+            <variable name="Raw19890">
+              <type>
+                <array>
+                  <dimension lower="0" upper="5" />
+                  <baseType>
+                    <BOOL />
+                  </baseType>
+                </array>
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml">ARRAY[0..5] OF BOOL;</xhtml>
+              </documentation>
+            </variable>
+            <variable name="Raw19892">
+              <type>
+                <array>
+                  <dimension lower="0" upper="3" />
+                  <baseType>
+                    <UINT />
+                  </baseType>
+                </array>
+              </type>
+            </variable>
+            <variable name="Raw19894">
+              <type>
+                <array>
+                  <dimension lower="0" upper="3" />
+                  <baseType>
+                    <INT />
+                  </baseType>
+                </array>
+              </type>
+            </variable>
+            <variable name="Raw19896">
+              <type>
+                <array>
+                  <dimension lower="0" upper="3" />
+                  <baseType>
+                    <INT />
+                  </baseType>
+                </array>
+              </type>
+            </variable>
+            <variable name="Raw19898">
+              <type>
+                <array>
+                  <dimension lower="0" upper="14" />
+                  <dimension lower="0" upper="1" />
+                  <baseType>
+                    <REAL />
+                  </baseType>
+                </array>
+              </type>
+            </variable>
+            <variable name="Raw19900">
+              <type>
+                <BOOL />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml">TKT Light Barrier</xhtml>
+              </documentation>
+            </variable>
+            <variable name="Raw19902">
+              <type>
+                <REAL />
+              </type>
+            </variable>
+            <variable name="Raw19905">
+              <type>
+                <array>
+                  <dimension lower="0" upper="1" />
+                  <baseType>
+                    <BOOL />
+                  </baseType>
+                </array>
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> ThinKerfCuttingInsert </xhtml>
+              </documentation>
+            </variable>
+            <variable name="Raw19907">
+              <type>
+                <array>
+                  <dimension lower="0" upper="3" />
+                  <baseType>
+                    <BOOL />
+                  </baseType>
+                </array>
+              </type>
+            </variable>
+            <variable name="Raw19908">
+              <type>
+                <array>
+                  <dimension lower="0" upper="1" />
+                  <baseType>
+                    <BOOL />
+                  </baseType>
+                </array>
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> SelectMultipleOrders SelectMultipleStacks </xhtml>
+              </documentation>
+            </variable>
+            <variable name="Raw19910">
+              <type>
+                <INT />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> HardItem 
+ base 
+ twincat version </xhtml>
+              </documentation>
+            </variable>
+            <variable name="Raw19912">
+              <type>
+                <array>
+                  <dimension lower="0" upper="7" />
+                  <baseType>
+                    <REAL />
+                  </baseType>
+                </array>
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> sawblade dimension limits </xhtml>
+              </documentation>
+            </variable>
+            <variable name="Raw19914">
+              <type>
+                <REAL />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> working angle </xhtml>
+              </documentation>
+            </variable>
+            <variable name="Raw19916">
+              <type>
+                <BOOL />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> uiconfiguration 
+ storing options </xhtml>
+              </documentation>
+            </variable>
+            <variable name="Raw19918">
+              <type>
+                <array>
+                  <dimension lower="0" upper="2" />
+                  <baseType>
+                    <BOOL />
+                  </baseType>
+                </array>
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> positioning mode </xhtml>
+              </documentation>
+            </variable>
+            <variable name="Raw19920">
+              <type>
+                <BOOL />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> chamfering </xhtml>
+              </documentation>
+            </variable>
+            <variable name="Raw19922">
+              <type>
+                <array>
+                  <dimension lower="0" upper="1" />
+                  <baseType>
+                    <BOOL />
+                  </baseType>
+                </array>
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> chamfering - chamfer width default, Main cutting edge default </xhtml>
+              </documentation>
+            </variable>
+            <variable name="Raw19924">
+              <type>
+                <array>
+                  <dimension lower="0" upper="1" />
+                  <baseType>
+                    <REAL />
+                  </baseType>
+                </array>
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> chamfering - protection chamfer </xhtml>
+              </documentation>
+            </variable>
+            <variable name="Raw19926">
+              <type>
+                <array>
+                  <dimension lower="0" upper="1" />
+                  <baseType>
+                    <REAL />
+                  </baseType>
+                </array>
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> chamfering - protection chamfer 2 </xhtml>
+              </documentation>
+            </variable>
+            <variable name="Raw19928">
+              <type>
+                <BOOL />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> carbide tip seat </xhtml>
+              </documentation>
+            </variable>
+            <variable name="Raw19930">
+              <type>
+                <BOOL />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> relief grinding </xhtml>
+              </documentation>
+            </variable>
+            <variable name="Raw19932">
+              <type>
+                <BOOL />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> repairing tooth </xhtml>
+              </documentation>
+            </variable>
+            <variable name="Raw19934">
+              <type>
+                <array>
+                  <dimension lower="0" upper="1" />
+                  <baseType>
+                    <BOOL />
+                  </baseType>
+                </array>
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> tooth construction - saw blade category </xhtml>
+              </documentation>
+            </variable>
+            <variable name="Raw19936">
+              <type>
+                <array>
+                  <dimension lower="0" upper="8" />
+                  <baseType>
+                    <BOOL />
+                  </baseType>
+                </array>
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> tooth construction - saw blade geometry </xhtml>
+              </documentation>
+            </variable>
+            <variable name="Raw19938">
+              <type>
+                <array>
+                  <dimension lower="0" upper="1" />
+                  <baseType>
+                    <BOOL />
+                  </baseType>
+                </array>
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> tooth construction - clearance surface back </xhtml>
+              </documentation>
+            </variable>
+            <variable name="Raw19940">
+              <type>
+                <BOOL />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> peripheral basic 
+ axis 
+ axis - v axis </xhtml>
+              </documentation>
+            </variable>
+            <variable name="Raw19942">
+              <type>
+                <array>
+                  <dimension lower="0" upper="1" />
+                  <baseType>
+                    <INT />
+                  </baseType>
+                </array>
+              </type>
+            </variable>
+            <variable name="Raw19944">
+              <type>
+                <array>
+                  <dimension lower="0" upper="11" />
+                  <baseType>
+                    <LREAL />
+                  </baseType>
+                </array>
+              </type>
+            </variable>
+            <variable name="Raw19946">
+              <type>
+                <array>
+                  <dimension lower="0" upper="1" />
+                  <baseType>
+                    <REAL />
+                  </baseType>
+                </array>
+              </type>
+            </variable>
+            <variable name="Raw19948">
+              <type>
+                <array>
+                  <dimension lower="0" upper="4" />
+                  <dimension lower="0" upper="1" />
+                  <baseType>
+                    <REAL />
+                  </baseType>
+                </array>
+              </type>
+            </variable>
+            <variable name="Raw19950">
+              <type>
+                <BOOL />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> axis - w axis </xhtml>
+              </documentation>
+            </variable>
+            <variable name="Raw19952">
+              <type>
+                <array>
+                  <dimension lower="0" upper="1" />
+                  <baseType>
+                    <INT />
+                  </baseType>
+                </array>
+              </type>
+            </variable>
+            <variable name="Raw19954">
+              <type>
+                <array>
+                  <dimension lower="0" upper="11" />
+                  <baseType>
+                    <LREAL />
+                  </baseType>
+                </array>
+              </type>
+            </variable>
+            <variable name="Raw19956">
+              <type>
+                <array>
+                  <dimension lower="0" upper="1" />
+                  <baseType>
+                    <REAL />
+                  </baseType>
+                </array>
+              </type>
+            </variable>
+            <variable name="Raw19958">
+              <type>
+                <array>
+                  <dimension lower="0" upper="4" />
+                  <dimension lower="0" upper="1" />
+                  <baseType>
+                    <REAL />
+                  </baseType>
+                </array>
+              </type>
+            </variable>
+            <variable name="Raw19960">
+              <type>
+                <BOOL />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> lubrication - circuit 1 </xhtml>
+              </documentation>
+            </variable>
+            <variable name="Raw19962">
+              <type>
+                <INT />
+              </type>
+            </variable>
+            <variable name="Raw19964">
+              <type>
+                <array>
+                  <dimension lower="0" upper="1" />
+                  <baseType>
+                    <UINT />
+                  </baseType>
+                </array>
+              </type>
+            </variable>
+            <variable name="Raw19966">
+              <type>
+                <REAL />
+              </type>
+            </variable>
+            <variable name="Raw19968">
+              <type>
+                <BOOL />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> lubrication - circuit 2 </xhtml>
+              </documentation>
+            </variable>
+            <variable name="Raw19970">
+              <type>
+                <INT />
+              </type>
+            </variable>
+            <variable name="Raw19972">
+              <type>
+                <array>
+                  <dimension lower="0" upper="1" />
+                  <baseType>
+                    <UINT />
+                  </baseType>
+                </array>
+              </type>
+            </variable>
+            <variable name="Raw19974">
+              <type>
+                <REAL />
+              </type>
+            </variable>
+            <variable name="Raw19976">
+              <type>
+                <REAL />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> grinding wheel 
+ grinding wheel - lead angle default </xhtml>
+              </documentation>
+            </variable>
+            <variable name="Raw19978">
+              <type>
+                <BOOL />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> grinding wheel - cermet </xhtml>
+              </documentation>
+            </variable>
+            <variable name="Raw19980">
+              <type>
+                <array>
+                  <dimension lower="0" upper="1" />
+                  <baseType>
+                    <INT />
+                  </baseType>
+                </array>
+              </type>
+            </variable>
+            <variable name="Raw19982">
+              <type>
+                <array>
+                  <dimension lower="0" upper="2" />
+                  <baseType>
+                    <REAL />
+                  </baseType>
+                </array>
+              </type>
+            </variable>
+            <variable name="Raw19984">
+              <type>
+                <BOOL />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> grinding wheel - carbide </xhtml>
+              </documentation>
+            </variable>
+            <variable name="Raw19986">
+              <type>
+                <array>
+                  <dimension lower="0" upper="1" />
+                  <baseType>
+                    <INT />
+                  </baseType>
+                </array>
+              </type>
+            </variable>
+            <variable name="Raw19988">
+              <type>
+                <array>
+                  <dimension lower="0" upper="2" />
+                  <baseType>
+                    <REAL />
+                  </baseType>
+                </array>
+              </type>
+            </variable>
+            <variable name="Raw19990">
+              <type>
+                <BOOL />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> grinding wheel - steel </xhtml>
+              </documentation>
+            </variable>
+            <variable name="Raw19992">
+              <type>
+                <array>
+                  <dimension lower="0" upper="1" />
+                  <baseType>
+                    <INT />
+                  </baseType>
+                </array>
+              </type>
+            </variable>
+            <variable name="Raw19994">
+              <type>
+                <array>
+                  <dimension lower="0" upper="2" />
+                  <baseType>
+                    <REAL />
+                  </baseType>
+                </array>
+              </type>
+            </variable>
+            <variable name="Raw19996">
+              <type>
+                <array>
+                  <dimension lower="0" upper="7" />
+                  <baseType>
+                    <INT />
+                  </baseType>
+                </array>
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> peripheral optional 
+ remote monitoring 
+ remote monitoring - to external </xhtml>
+              </documentation>
+            </variable>
+            <variable name="Raw19998">
+              <type>
+                <array>
+                  <dimension lower="0" upper="7" />
+                  <baseType>
+                    <INT />
+                  </baseType>
+                </array>
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> remote monitoring - from external </xhtml>
+              </documentation>
+            </variable>
+            <variable name="Raw20000">
+              <type>
+                <UINT />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> io link </xhtml>
+              </documentation>
+            </variable>
+          </struct>
+        </baseType>
+        <addData>
+          <data name="http://www.3s-software.com/plcopenxml/attributes" handleUnknown="implementation">
+            <Attributes>
+              <Attribute Name="pack_mode" Value="1" />
+            </Attributes>
+          </data>
+          <data name="http://www.3s-software.com/plcopenxml/interfaceasplaintext" handleUnknown="implementation">
+            <InterfaceAsPlainText>
+              <xhtml xmlns="http://www.w3.org/1999/xhtml">{attribute 'pack_mode' := '1'}
+TYPE ST_MachSpecificRaw :
+	STRUCT
+				(* checksum *)
+					Raw100			:	LREAL;
+				(* base *)
+					Raw1000			:	INT;
+					Raw1001			:	STRING;
+					Raw1002			:	INT;
+					Raw1003			:	STRING;
+					Raw1004			:	ARRAY[0..3] OF REAL;
+					Raw2010			:	ARRAY[0..7] OF BOOL;
+					Raw2020			:	ARRAY[0..1] OF BOOL;
+					Raw2021			:	BOOL;
+					Raw2022			:	ARRAY[0..5] OF UINT;
+					Raw2023			:	ARRAY[0..2] OF BOOL;
+					Raw2024			:	ARRAY[0..2] OF REAL;
+					Raw2025			:	ARRAY[0..1] OF BOOL;
+					Raw2030			:	ARRAY[0..2] OF BOOL;
+				(* UI visu *)
+					Raw2040			:	ARRAY[0..7] OF BOOL;
+					Raw2050			:	INT;
+				(* ui config *)
+				(* peripheral basic *)
+				(* axis *)
+				(* x axis *)
+					Raw3000			:	BOOL;
+					Raw3001			:	ARRAY[0..1] OF INT;
+					Raw3002 		:	ARRAY[0..11] OF REAL;
+					Raw3003 		:	ARRAY[0..1] OF LREAL;
+				(* y axis *)
+					Raw3100			:	BOOL;
+					Raw3101			:	ARRAY[0..1] OF INT;
+					Raw3102 		:	ARRAY[0..11] OF REAL;
+					Raw3103 		:	ARRAY[0..3] OF REAL;
+				(* z axis *)
+					Raw3200			:	BOOL;
+					Raw3201			:	ARRAY[0..1] OF INT;
+					Raw3202 		:	ARRAY[0..11] OF REAL;
+					Raw3203 		:	ARRAY[0..3] OF REAL;
+				(* axis position *)
+					Raw3300			:	ARRAY[0..1] OF REAL;
+				(* coolant/filter *)
+				(* chiller *)
+					Raw4000			:	BOOL;
+					Raw4001			:	REAL;
+					Raw4002 		:	BOOL;
+				(* filter *)
+					Raw4100			:	BOOL;
+					Raw4101			:	REAL;
+					Raw4102 		:	BOOL;
+				(* return feed pump *)
+					Raw4200			:	BOOL;
+					Raw4201			:	REAL;
+					Raw4202 		:	BOOL;
+				(* coolant pump *)
+					Raw4300			:	BOOL;
+					Raw4301			:	REAL;
+					Raw4302 		:	BOOL;
+				(* cartridge counter *)
+					Raw4400			:	ARRAY[0..2] OF UINT;
+				(* Extraction *)
+					Raw5000			:	BOOL;
+					Raw5001			:	REAL;
+				(* grinding head *)
+					Raw6000			:	INT;
+				(* grinding wheel *)
+				(* cbn *)
+					Raw7000			:	BOOL;
+					Raw7001			:	STRING[3];
+					Raw7002 		:	ARRAY[0..2] OF REAL;
+				(* dia - carbide *)
+					Raw7100			:	BOOL;
+					Raw7101			:	STRING[3];
+					Raw7102 		:	ARRAY[0..2] OF REAL;
+				(* dia - cermet *)
+					Raw7200			:	BOOL;
+					Raw7201			:	STRING[3];
+					Raw7202 		:	ARRAY[0..2] OF REAL;
+				(* dressing *)
+					Raw7300			:	BOOL;
+					Raw7301			:	STRING[3];
+					Raw7302 		:	ARRAY[0..2] OF REAL;
+				(* lubrication *)
+					Raw8000			:	ARRAY[0..1] OF UINT;
+				(* peripheral basic *)
+				(* peripheral optional *)
+				(* chip breaker *)
+					Raw9000			:	BOOL;
+					Raw9001			:	INT;
+					Raw9002			:	ARRAY[0..1] OF UINT;
+					Raw9003			:	ARRAY[0..3] OF REAL;
+				(* fire extinguisher *)
+					Raw10000		:	ARRAY[0..1] OF BOOL;
+				(* flange handler *)
+					Raw11000		:	INT;
+					Raw11001		:	BOOL;
+				(* res - not longer used for flange handler *)
+					Raw11002		:	ARRAY[0..11] OF REAL;
+				(* light barrier *)
+					Raw12000		:	BOOL;
+					Raw12001		:	UINT;
+					Raw12002		:	BOOL;
+					Raw12003		:	ARRAY[0..1] OF REAL;
+				(* positioning sensor *)
+					Raw13000		:	ARRAY[0..3] OF BOOL;
+				(* loader*)
+					Raw14000		:	BOOL;
+					Raw14001		:	ARRAY[0..1] OF REAL;
+					Raw14002		:	UINT;
+				(* saw blade clamping *)
+					Raw15000		:	ARRAY[0..1] OF BOOL;
+				(* saw blade handler *)
+					Raw16000		:	BOOL;
+					Raw16001		:	INT;
+					Raw16002		:	ARRAY[0..4] OF DINT;
+				(* support bracket *)
+					Raw17000		:	BOOL;
+					Raw17001		:	INT;
+					Raw17002		:	ARRAY[0..2] OF BOOL;
+				(* peripheral optional *)
+				(* peripheral basic *)
+				(* safety controller *)
+					Raw18000		:	INT;
+				(* peripheral basic *)
+				(* new opmode *)
+					Raw19000		:	ARRAY[0..7] OF BOOL;
+				(* new toothshape *)
+					Raw19001		:	ARRAY[0..7] OF BOOL;
+				(* new chipbreaker *)
+					Raw19200		:	ARRAY[0..1] OF REAL;
+					Raw19201		:	ARRAY[0..1] OF REAL;
+				(* touch man handwheel mode *)
+					Raw19300		:	INT;
+				(* new StoringOptions *)
+					Raw19310		:	ARRAY[0..3] OF BOOL;
+				(* new ProcessingOptions *)
+					Raw19320		:	ARRAY[0..1] OF INT;
+				(* new FRed *)
+					Raw19330		:	INT;
+					Raw19331		:	INT;
+				(* support bracket message delay *)
+					Raw19340		:	REAL;
+				(* loader *)
+					Raw19400		:	ARRAY[0..1] OF INT;
+					Raw19410		:	ARRAY[0..5] OF REAL;
+				(* hydraulics *)
+					Raw19420		:	BOOL;
+				(* voltage monitoring *)
+					Raw19430		:	BOOL;
+				(* lubrication circuit 2 *)
+					Raw19440		:	BOOL;
+					Raw19441		:	ARRAY[0..1] OF UINT;
+				(* ethercat *)
+					Raw19450		:	UINT;
+				(* homing pos *)
+					Raw19460		:	REAL;
+				(* New Loader Arbor *)
+					Raw19500		:	UINT;	(* ArborNumber *)
+					Raw19510		:	UINT;	(* ArborNumberSource	*)
+				(* New CachedStacks *)
+					Raw19550		:	UINT;
+					Raw19600		:	UINT;(* Neu *)
+				(* Infeed Correction chamfering *)
+					Raw19650		:	ARRAY[0..1] OF BOOL;
+					Raw19651		:	ARRAY[0..5] OF REAL;
+				(* axis options *)
+					Raw19655		:	ARRAY[0..4] OF BOOL;
+				(* UI visu *)
+					Raw19700		:	BOOL;
+				(* LightBarrier PositionOffset *)
+					Raw19710		:	REAL;
+				(* positioning sensor*)
+					Raw19800		:	BOOL;
+					Raw19801		:	INT;
+				(* SawBladeMeasureAuto *)
+					Raw19810		:	BOOL;
+				(* OperatingModeTouchOption *)
+					Raw19811		:	BOOL;
+				(* CoolantSystem *)
+					Raw19814		:	INT;
+				(* FeedRateCorrection *)
+					Raw19815		:	REAL;
+				(* grinding head no swivel at process end *)
+					Raw19820		:	BOOL;
+				(* remote monitoring *)
+					Raw19825		:	ARRAY[0..2] OF BOOL;
+					Raw19830		:	ARRAY[0..1] OF REAL;
+					Raw19831		:	REAL;
+				(* Safety Circuit Option : With/Without Enabling Switches *)
+					Raw19833		:	INT;
+				(* Chip Breaker Motion Type *)
+					Raw19835		:	 INT;	(* Stepper , Pneumatic *)
+					Raw19839		:	REAL;	(* Reference position of the stepper Motor *)
+					Raw19840		:	ARRAY[0..3] OF REAL; (* New for ChipBreaker GW Width and Diameter *)
+				(* info -&gt; Raw11002 = res *)
+				(* grinding wheel model *)
+					Raw19842		:	INT;
+				(* limit switch z axis *)
+					Raw19843		:	BOOL;
+				(* lubrication *)
+					Raw19844		:	ARRAY[0..1] OF BOOL;
+				(* pneumatics *)
+					Raw19845		:	BOOL;
+				(* temperature monitoring *)
+					Raw19846		:	BOOL;
+				(* limit switch normally open / pressure switch - coolant ystem *)
+					Raw19847		:	ARRAY[0..4] OF BOOL;
+				(* limit switch normally open - extraction *)
+					Raw19848		:	BOOL;
+
+				(* Chip Breaker Edge Distance *)
+					Raw19850		:	INT;
+					Raw19851		:	REAL;
+					Raw19852		:	BOOL;
+					Raw19853		:	REAL;
+					Raw19854		:	BOOL;
+				(* Remote monitoring fire extinguisher ext warning *)
+					Raw19856		:	BOOL;
+				(* Grinding Wheel Cover *)
+					Raw19860		:	INT;
+				(* Chamfer No of Touch *)
+					Raw19865		:	ARRAY[0..1] OF UINT;
+				(* chamfer touch pos *)
+					Raw19866		:	ARRAY[0..1] OF BOOL;
+				(* History File *)
+					(* writing Conditions *)
+					Raw19868		:	ARRAY [0..1] OF BOOL;
+				(* History File Buffering *)
+					Raw19869		:	UINT;
+					(* Extraction Running Monitoring *)
+					Raw19870		:	BOOL;
+				(* FRed Chamfering InFeed *)
+					Raw19880		:	ARRAY[0..5] OF BOOL;
+					Raw19881		:	ARRAY[0..5] OF REAL;
+					Raw19885		:	BOOL;
+					Raw19886		:	LREAL;
+					Raw19887		:	BOOL;
+				(*  FRed ExpandedOrders *)
+					Raw19888		:	UINT;
+				(* ThinKerfCuttingInsert *)
+					Raw19890		:	ARRAY[0..5] OF BOOL;	(*ARRAY[0..5] OF BOOL;*)
+					Raw19892		:	ARRAY[0..3] OF UINT;
+					Raw19894		:	ARRAY[0..3] OF INT;
+					Raw19896		:	ARRAY[0..3] OF INT;
+					Raw19898		:	ARRAY[0..14,0..1] OF REAL;
+				(*TKT Light Barrier*)
+					Raw19900		:	BOOL;
+					Raw19902		:	REAL;
+					(* ThinKerfCuttingInsert *)
+					Raw19905		:	ARRAY [0..1] OF BOOL;
+					Raw19907        :	ARRAY [0..3] OF BOOL;
+					(* SelectMultipleOrders SelectMultipleStacks *)
+					Raw19908		:	ARRAY[0..1] OF BOOL;
+					
+				(* HardItem *)
+					(* base *)
+						(* twincat version *)
+						Raw19910		:	INT;
+						(* sawblade dimension limits *)
+						Raw19912		:	ARRAY[0..7] OF REAL;
+						(* working angle *)
+						Raw19914		:	REAL;
+					(* uiconfiguration *)
+						(* storing options *)
+						Raw19916		:	BOOL; 
+						(* positioning mode *)
+						Raw19918		:	ARRAY[0..2] OF BOOL;
+						(* chamfering *)
+						Raw19920		:	BOOL;
+						(* chamfering - chamfer width default, Main cutting edge default *)
+						Raw19922		:	ARRAY[0..1] OF BOOL;
+						(* chamfering - protection chamfer *)
+						Raw19924		:	ARRAY[0..1] OF REAL;
+						(* chamfering - protection chamfer 2 *)
+						Raw19926		:	ARRAY[0..1] OF REAL;
+						(* carbide tip seat *)
+						Raw19928		:	BOOL;
+						(* relief grinding *)
+						Raw19930		:	BOOL;
+						(* repairing tooth *)
+						Raw19932		:	BOOL;
+						(* tooth construction - saw blade category *)
+						Raw19934		:	ARRAY[0..1] OF BOOL;
+						(* tooth construction - saw blade geometry *)
+						Raw19936		:	ARRAY[0..8] OF BOOL;
+						(* tooth construction - clearance surface back *)
+						Raw19938		:	ARRAY[0..1] OF BOOL;
+					(* peripheral basic *)
+						(* axis *)
+						(* axis - v axis *)
+						Raw19940		:	BOOL;
+						Raw19942		:	ARRAY[0..1] OF INT;
+						Raw19944 		:	ARRAY[0..11] OF LREAL;
+						Raw19946 		:	ARRAY[0..1] OF REAL;
+						Raw19948		:	ARRAY[0..4,0..1] OF REAL;
+						(* axis - w axis *)
+						Raw19950		:	BOOL;
+						Raw19952		:	ARRAY[0..1] OF INT;
+						Raw19954 		:	ARRAY[0..11] OF LREAL;
+						Raw19956 		:	ARRAY[0..1] OF REAL;
+						Raw19958		:	ARRAY[0..4,0..1] OF REAL;
+						(* lubrication - circuit 1 *)
+						Raw19960		:	BOOL;
+						Raw19962		:	INT;
+						Raw19964 		:	ARRAY[0..1] OF UINT;
+						Raw19966 		:	REAL;
+						(* lubrication - circuit 2 *)
+						Raw19968		:	BOOL;
+						Raw19970		:	INT;
+						Raw19972 		:	ARRAY[0..1] OF UINT;
+						Raw19974 		:	REAL;
+						(* grinding wheel *)
+						(* grinding wheel - lead angle default *)
+						Raw19976		:	REAL;
+						(* grinding wheel - cermet *)
+						Raw19978		:	BOOL;
+						Raw19980 		:	ARRAY[0..1] OF INT;
+						Raw19982 		:	ARRAY[0..2] OF REAL;
+						(* grinding wheel - carbide *)
+						Raw19984		:	BOOL;
+						Raw19986 		:	ARRAY[0..1] OF INT;
+						Raw19988 		:	ARRAY[0..2] OF REAL;
+						(* grinding wheel - steel *)
+						Raw19990		:	BOOL;
+						Raw19992 		:	ARRAY[0..1] OF INT;
+						Raw19994 		:	ARRAY[0..2] OF REAL;
+					(* peripheral optional *)
+						(* remote monitoring *)
+						(* remote monitoring - to external *)
+						Raw19996 		:	ARRAY[0..7] OF INT;
+						(* remote monitoring - from external *)
+						Raw19998 		:	ARRAY[0..7] OF INT;
+						(* io link *)
+						Raw20000		:	UINT;
+	END_STRUCT
+END_TYPE</xhtml>
+            </InterfaceAsPlainText>
+          </data>
+          <data name="http://www.3s-software.com/plcopenxml/objectid" handleUnknown="discard">
+            <ObjectId>3922369a-a729-4342-8a1a-308655eebf14</ObjectId>
+          </data>
+        </addData>
+      </dataType>
+    </dataTypes>
+    <pous />
+  </types>
+  <instances>
+    <configurations />
+  </instances>
+  <addData>
+    <data name="http://www.3s-software.com/plcopenxml/projectstructure" handleUnknown="discard">
+      <ProjectStructure>
+        <Object Name="ST_MachSpecificRaw" ObjectId="3922369a-a729-4342-8a1a-308655eebf14" />
+      </ProjectStructure>
+    </data>
+  </addData>
+</project>
